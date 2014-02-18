@@ -16,6 +16,7 @@ var_dump($_POST);
 	<title>My First Codeup Form</title>
 </head>
 	<body>
+        <div style="background:-webkit-linear-gradient(left top, moccasin, white);">
     		<form method="POST" action="">
         <p>
             <label for="username">Username:</label>
@@ -99,8 +100,22 @@ var_dump($_POST);
                         </p>
             </form>
             <br />
-            
-           <hr />     
+            <hr /> 
 
+            <form method="GET" action="">
+                <br />
+                <h4>Select Testing:</h4>
+                <label for="select" style="font-size:18px;">Is This a Select Box?</label>
+                    <select id="select" name="select">
+                        <option value="1" selected>YES!!</option>
+                        <option value="0">NO!!</option>
+                    </select>
+                    <p>
+                        <input type="submit" value="Answer">
+                    </p>
+                </form>
+                <br />
+                <hr />
+        </div>
 	</body>
 </html>
