@@ -26,6 +26,10 @@ echo "<hr style=\"height:2px; width:95%; background-color:navy; border-radius:20
 		height: 2px;
 		background-color: navy;
 	}
+	div {
+		padding: 20px;
+		border-radius: 20px;
+	}
 
 	</style>
 </head>
