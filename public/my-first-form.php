@@ -1,9 +1,22 @@
+
+<?php
+
+echo "<p>GET:</p>";
+var_dump($_GET);
+
+echo "<p>POST:</p>";
+var_dump($_POST);
+
+?>
+
+
+<!DOCTYPE html>
 <html>
 <head>
 	<title>My First Codeup Form</title>
 </head>
 	<body>
-    		<form method="POST" action="http://requestb.in/pyd5k4py">
+    		<form method="POST" action="">
         <p>
             <label for="username">Username:</label>
             <input id="username" name="username" type="text" placeholder="Your Username">
@@ -17,7 +30,7 @@
         </p>
             </form>
         <hr />
-            <form method="POST" action="http://requestb.in/pyd5k4py">
+            <form method="POST" action="">
                 <p>
                     <label for="to">To:</label>
                     <input id="to" name="to" type="text" placeholder="Recipient">
@@ -44,7 +57,7 @@
             </form>
         <hr />
         <h2 style="text-align:center; color:darkgreen; text-decoration:underline">Multiple Choice Test</h2>
-            <form method="POST" action="http://requestb.in/pyd5k4py">
+            <form method="POST" action="">
                 
                     <h4>What is your favorite color?</h4>
                         <label for="q1a" style="color:navy; font-size:18px;">
