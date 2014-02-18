@@ -1,12 +1,13 @@
 
 <?php
 
+echo "<h3>Form Information</h3><hr style=\"height:2px; width: 95%; background-color:navy; border-radius:20px;\"/>";
 echo "<p>GET:</p>";
 var_dump($_GET);
 
 echo "<p>POST:</p>";
 var_dump($_POST);
-
+echo "<hr style=\"height:2px; width:95%; background-color:navy; border-radius:20px;\"/>";
 ?>
 
 
