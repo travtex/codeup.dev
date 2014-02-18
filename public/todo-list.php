@@ -16,13 +16,13 @@ echo "<hr style=\"height:2px; width:95%; background-color:navy; border-radius:20
 	<meta charset="UTF-8">
 	<title>TODO List</title>
 	<style type="text/css">
-	html{
+	html {
 		height: 100%;
 	}
-	body{
+	body {
 		margin: 20px;
 	}
-	hr{
+	hr {
 		height: 2px;
 		background-color: navy;
 	}
