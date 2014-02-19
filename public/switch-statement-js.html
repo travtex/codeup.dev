@@ -3,6 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Switch Statement</title>
+	<style>
+	html {
+    	height: 100%;
+	}
+	body {
+	    height: 100%;
+	    margin: 0;
+	    background-repeat: no-repeat;
+	    background-attachment: fixed;
+	}
+	</style>
 </head>
 <body>
 	<script>
@@ -18,31 +29,31 @@ switch (color) {
     //       example: Blue is the color of the sky.
     case 'red':
     	console.log("Some beets are " + color + '.');
-    	document.body.style.background = color;
+    	document.body.style.background = "-webkit-radial-gradient(top left, " + color + ", white)";
     	break;
     case 'orange':
     	console.log("Generally, oranges are " + color + '.');
-    	document.body.style.background = color;
+    	document.body.style.background = "-webkit-radial-gradient(top left, " + color + ", white)";
     	break;
     case 'yellow':
     	console.log("Canaries are " + color + '.');
-    	document.body.style.background = color;
+    	document.body.style.background = "-webkit-radial-gradient(top left, " + color + ", white)";
     	break;
     case 'green':
     	console.log("Pretty cool color, that " + color + '.');
-    	document.body.style.background = color;
+    	document.body.style.background = "-webkit-radial-gradient(top left, " + color + ", white)";
     	break;
     case 'blue':
     	console.log("Blue jays are " + color + ".  Be weird if they weren't.");
-    	document.body.style.background = color;
+    	document.body.style.background = "-webkit-radial-gradient(top left, " + color + ", white)";
     	break;
     case 'indigo':
     	console.log("I'm not convinced that " + color + " is a real color.");
-    	document.body.style.background = color;
+    	document.body.style.background = "-webkit-radial-gradient(top left, " + color + ", white)";
     	break;
     default:
     	console.log("Is " + color + " a particularly specific shade of purple?");
-    	document.body.style.background = color;
+    	document.body.style.background = "-webkit-radial-gradient(top left, " + color + ", white)";
     // todo: create a default case that will catch indigo and violet
     // todo: for the default case, log: I don't know anything by that color.
 }
