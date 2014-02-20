@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Break and Continue</title>
+</head>
+<body>
+	<script>
+
+		var num = 0;
+		while(num % 2 !== 1){
+			num = Math.floor(Math.random()*50+1)
+		}
+		
+		for(i = 0; i <= 50; i++) {
+			if(i % 2 == 0){
+				continue;
+			} else if (i == num){
+				console.log(i + " was the random number!");
+			} else {
+				console.log(i);
+			}
+			
+		}
+
+
+	</script>
+</body>
+</html>
