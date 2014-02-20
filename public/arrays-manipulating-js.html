@@ -3,6 +3,19 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Manipulating Arrays</title>
+
+	<style>
+
+	html {
+    	height: 100%;
+	}
+	body {
+	    height: 100%;
+	    margin: 0 auto;
+	    background-repeat: no-repeat;
+	    background-attachment: fixed;
+	}
+	</style>
 </head>
 <body>
 	<script>
@@ -10,6 +23,40 @@
 		// todo:
 		// Create an array holding the names of the planets of our solar system (in order, starting closest to the sun).
 		var planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune'];
+
+		var planet = planets[Math.floor(Math.random()*planets.length)];
+
+		console.log(planet);
+
+		switch(planet){
+			case 'Mercury':
+				document.body.style.backgroundImage = "url('http://www.fengshuidana.com/wp-content/uploads/2012/10/mercury_4179_1.jpg')";
+				break;
+			case 'Venus':
+				document.body.style.backgroundImage = "url('http://www.hdpaperwall.com/wp-content/uploads/2014/01/Venus_clouds.jpg')";
+				break;
+			case 'Earth':
+				document.body.style.backgroundImage = "url('http://images.nationalgeographic.com/wpf/media-live/photos/000/061/cache/earth-full-view_6125_990x742.jpg')";
+				break;
+			case 'Mars':
+				document.body.style.backgroundImage = "url('http://scm-l3.technorati.com/13/08/12/77049/Mars-3.jpg?t=20130812070610')";
+				break;
+			case 'Jupiter':
+				document.body.style.backgroundImage = "url('http://www.thelivingmoon.com/43ancients/04images/Jupiter/jupiter.jpg')";
+				break;
+			case 'Saturn':
+				document.body.style.backgroundImage = "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIge5gosGZF2TFo86M43Ys6ysQDmyzNBYfasJoL2Gt0CghWkT7qQ')";
+				break;
+			case 'Uranus':
+				document.body.style.backgroundImage = "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgFMGxu0ngOC4sTxIwrdtzE2RxwK_ivhNQ37aSkcXzwPp90SJm')";
+				break;
+			case 'Neptune':
+				document.body.style.backgroundImage = "url('http://wkiri.com/comphist/wp-content/uploads/2011/10/neptune.jpg')";
+				break;
+			default :
+				document.body.style.backgroundImage = "url('http://game-boy.igomages.com/images1/out-to-lunch-2.jpg')";
+				
+		}
 
 		// function for logging the planets array
 		function logPlanets() {
