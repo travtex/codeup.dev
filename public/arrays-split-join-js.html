@@ -3,18 +3,46 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Arrays Split and Join</title>
+	<style>
+
+	body {
+		margin: 40px;
+	}
+	a {
+		text-decoration: none;
+		font-size: 18px;
+		color: navy;
+	}
+
+	a:hover {
+		font-size: 19px;
+		color: blue;
+	}
+
+	</style>
 </head>
 <body>
 	<script>
 
-	var planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune'];
+		var planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune'];
 
-	planetsAsString = planets.join(' | ');
-	console.log(planetsAsString);
 
-	planetsAsArray = planetsAsString.split(' | ');
-	console.log(planetsAsArray);
+		var planetlink = new Array();
+		planets.forEach(function(element, array){
+			planetlink.push("<a href=http://en.wikipedia.com/wiki/" + element + ">" + element + "</a>");
 
+		});
+
+		planetlinkAsString = planetlink.join(' | ');
+		document.write(planetlinkAsString);
+
+		// planetsAsString = planets.join(' | ');
+		// console.log(planetsAsString);
+		// document.write("<h1>" + planetsAsString + "</h1>");
+
+		// planetsAsArray = planetsAsString.split(' | ');
+		// console.log(planetsAsArray);
+		
 	</script>
 	
 </body>
