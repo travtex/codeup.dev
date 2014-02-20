@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>User Interaction</title>
+</head>
+<body>
+	<script>
+
+// todo: Ask the user for their name.
+//       Keep asking if an empty input is provided.
+
+var userName = '';
+
+while (!userName) {
+	userName = prompt("What is your name?");
+}
+
+// todo: Show an alert message that welcomes the user based on their input.
+
+alert("Welcome to the Exercise Page, " + userName);
+
+confirm("Do you like pizza?") ? alert("Who doesn't?") : alert("Is something wrong with you?");
+
+// todo: Ask the user if they like pizza.
+//       Based on their answer tell show a creative alert message.
+
+	</script>
+</body>
+</html>
