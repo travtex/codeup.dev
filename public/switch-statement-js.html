@@ -13,6 +13,11 @@
 	    background-repeat: no-repeat;
 	    background-attachment: fixed;
 	}
+    h1 {
+        color: white;
+        text-align: center;
+        margin-top: 100px;
+    }
 	</style>
 </head>
 <body>
@@ -28,32 +33,32 @@ switch (color) {
     // todo: when a color is encountered log a message that tells the color, and an object of that color
     //       example: Blue is the color of the sky.
     case 'red':
-    	console.log("Some beets are " + color + '.');
-    	document.body.style.background = "-webkit-radial-gradient(top left, " + color + ", white)";
+    	document.write("<h1>Some beets are " + color + '.</h1>');
+    	document.body.style.background = "-webkit-radial-gradient(top left, " + color + ", black)";
     	break;
     case 'orange':
-    	console.log("Generally, oranges are " + color + '.');
-    	document.body.style.background = "-webkit-radial-gradient(top left, " + color + ", white)";
+    	document.write("<h1>Generally, oranges are " + color + '.</h1>');
+    	document.body.style.background = "-webkit-radial-gradient(top left, " + color + ", black)";
     	break;
     case 'yellow':
-    	console.log("Canaries are " + color + '.');
-    	document.body.style.background = "-webkit-radial-gradient(top left, " + color + ", white)";
+    	document.write("<h1>Canaries are " + color + '.</h1>');
+    	document.body.style.background = "-webkit-radial-gradient(top left, " + color + ", black)";
     	break;
     case 'green':
-    	console.log("Pretty cool color, that " + color + '.');
-    	document.body.style.background = "-webkit-radial-gradient(top left, " + color + ", white)";
+    	document.write("<h1>Pretty cool color, that " + color + '.</h1>');
+    	document.body.style.background = "-webkit-radial-gradient(top left, " + color + ", black)";
     	break;
     case 'blue':
-    	console.log("Blue jays are " + color + ".  Be weird if they weren't.");
-    	document.body.style.background = "-webkit-radial-gradient(top left, " + color + ", white)";
+    	document.write("<h1>Blue jays are " + color + ".  Be weird if they weren't.</h1>");
+    	document.body.style.background = "-webkit-radial-gradient(top left, " + color + ", black)";
     	break;
     case 'indigo':
-    	console.log("I'm not convinced that " + color + " is a real color.");
-    	document.body.style.background = "-webkit-radial-gradient(top left, " + color + ", white)";
+    	document.write("<h1>I'm not convinced that " + color + " is a real color.</h1>");
+    	document.body.style.background = "-webkit-radial-gradient(top left, " + color + ", black)";
     	break;
     default:
-    	console.log("Is " + color + " a particularly specific shade of purple?");
-    	document.body.style.background = "-webkit-radial-gradient(top left, " + color + ", white)";
+    	document.write("<h1>Is " + color + " a particularly specific shade of purple?</h1>");
+    	document.body.style.background = "-webkit-radial-gradient(top left, " + color + ", black)";
     // todo: create a default case that will catch indigo and violet
     // todo: for the default case, log: I don't know anything by that color.
 }
