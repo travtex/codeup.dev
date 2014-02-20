@@ -14,6 +14,7 @@
 	    margin: 0 auto;
 	    background-repeat: no-repeat;
 	    background-attachment: fixed;
+	    background-position: center;
 	}
 	</style>
 </head>
@@ -27,6 +28,9 @@
 		var planet = planets[Math.floor(Math.random()*planets.length)];
 
 		console.log(planet);
+
+		document.body.style.background = "#000";
+
 
 		switch(planet){
 			case 'Mercury':
@@ -55,7 +59,7 @@
 				break;
 			default :
 				document.body.style.backgroundImage = "url('http://game-boy.igomages.com/images1/out-to-lunch-2.jpg')";
-				
+
 		}
 
 		// function for logging the planets array
