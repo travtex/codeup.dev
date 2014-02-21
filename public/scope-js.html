@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Functions Intro</title>
+</head>
+<body>
+	<script>
+
+
+
+
+(function() {
+	var myNameIs = 'Travis'; 
+	alert("Hello, " + myNameIs + "!");
+}());
+
+
+// todo: Call the function 'sayHello' passing the variable 'myNameIs' as a parameter.
+
+// console.log(sayHello(myNameIs));
+
+// don't worry about the details of this line
+// just know that it genrates a random number between 1 and 100
+
+
+(function () {
+	var random = Math.floor((Math.random()*100)+1);
+	console.log(random%2 == 0 ? random + " is not odd." : random + " is odd.");
+
+}());
+
+// todo: Call the function 'isOdd' passing the variable 'random' as a parameter.
+
+// console.log(isOdd(random));
+
+	</script>
+</body>
+</html>
