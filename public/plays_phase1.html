@@ -18,8 +18,7 @@
 	    
 	    $( 'pre' ).html( function ( i, html ) {
     		var regexp, replacement;
-
-    		regexp = RegExp( '(' + characterName + ')', 'gi' );
+			regexp = RegExp( '(' + characterName + ')', 'gi' );
     		replacement = '<span class="highlight">$1</span>';
 
     		return html.replace( regexp, replacement );
