@@ -1,13 +1,4 @@
-<?php
 
-echo "<h3>Form Information</h3><hr style=\"height:2px; width: 95%; background-color:navy; border-radius:20px;\"/>";
-echo "<p>GET:</p>";
-var_dump($_GET);
-
-echo "<p>POST:</p>";
-var_dump($_POST);
-echo "<hr style=\"height:2px; width:95%; background-color:navy; border-radius:20px;\"/>";
-?>
 
 
 <!DOCTYPE html>
@@ -20,43 +11,121 @@ echo "<hr style=\"height:2px; width:95%; background-color:navy; border-radius:20
 		height: 100%;
 	}
 	body {
+		background-image: url('img/dark-blue-background.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-attachment: fixed;
 		margin: 20px;
 	}
 	hr {
 		height: 2px;
-		background-color: navy;
+		border-color: teal !important;
+		border-width: 2px !important;
 	}
 	div {
 		padding: 20px;
 		border-radius: 20px;
+
+	}
+
+	#main {
+		background: -webkit-radial-gradient(left top, lightsteelblue, white);
+		margin: 20px auto;
+		width: 85%;
+		border-style:groove;
+		border-width: 3px;
+		border-color: teal;
+	}
+
+	#main h2{
+		color: darkgreen;
+	}
+
+	ul {
+		font-size: 14pt;
 	}
 
 	</style>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div style="background:-webkit-radial-gradient(left top, lightsteelblue, white);">
-	<h2 style="color:darkgreen;">This is the TODO List</h2>
+
+	<?php 
+		
+		function import_data($filename) {
+		    if (filesize($filename) == 0) {
+		        return FALSE;
+		    }
+		    else {
+			    $handle = fopen($filename, "r");
+			    $contents = fread($handle, filesize($filename));
+			    $content_array = explode("\n", $contents);
+			    fclose($handle);
+			    return $content_array;
+		    }
+		}
+
+		function save_file($filename, $items) {
+			$handle = fopen($filename, "w");
+			$contents = implode("\n", $items);
+			fwrite($handle, $contents);
+    		fclose($handle);
+		}
+
+		function add_item(&$items) {
+			$items[] = $_POST['add'];
+		}
+
+		$items = [];
+
+	?>
+	<div id="main" >
+		<h2>This is the TODO List</h2>
+
+	<?php
+
+		$items = import_data("data/todo-list.txt");
+		
+		if(isset($_POST['add'])) {
+			add_item($items);
+			save_file("data/todo-list.txt", $items);
+		}
+		
+		if(isset($_GET['remove'])) {
+			unset($items[$_GET['remove']]);
+			save_file("data/todo-list.txt", $items);
+			header("Location: todo-list.php");
+		}
+	?>
 		<ul>
-			<li>Knick Knack</li>
-			<li>Paddy Whack</li>
-			<li>Give a Dog a Bone</li>
-			<li>Come Rolling Home</li>
+			<?php 
+
+			if($items){
+
+				foreach($items as $key => $item) { ?>
+				<li><?php echo $item; ?> <small>(<a href="?remove=<?php echo $key; ?>">Remove Item</a>)</small></li>
+			<?php }
+			} else { ?>
+				<li>No Available Items!</li>
+				<?php } ?>
 		</ul>
-
-	<hr style="height:2px; background-color:navy;"/>
-
-	<form method="POST" action="">
-		<p>
-			<label for="add">Enter a new list item: </label>
-		</p>
-		<input id="add" name="add" type="text" placeholder="New list item.">
-		<p>
-			<input type="submit" value="Add New Item">
-		</p>
-	</form>
+		<p><mark>Total Items: <?php echo count($items); ?></mark></p>
 
 	<hr />
 
+		<form method="POST" action="">
+			<div class="form-group">
+			<p>
+				<label for="add">Enter a new list item: </label>
+			</p>
+			<input id="add" class="form-control" name="add" type="text" placeholder="Enter New List Item.">
+			<p>
+				<br /><button type="submit" class="btn btn-primary">Add New Item</button>
+			</p>
+			</div>
+		</form>
+		
 	</div>
 </body>
 </html>
