@@ -1,3 +1,32 @@
+	<?php 
+		
+		function import_data($filename) {
+		    if (filesize($filename) == 0) {
+		        return FALSE;
+		    }
+		    else {
+			    $handle = fopen($filename, "r");
+			    $contents = fread($handle, filesize($filename));
+			    $content_array = explode("\n", $contents);
+			    fclose($handle);
+			    return $content_array;
+		    }
+		}
+
+		function save_file($filename, $items) {
+			$handle = fopen($filename, "w");
+			$contents = implode("\n", $items);
+			fwrite($handle, $contents);
+    		fclose($handle);
+		}
+
+		function add_item(&$items) {
+			$items[] = $_POST['add'];
+		}
+
+		$items = [];
+
+	?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,35 +77,6 @@
 </head>
 <body>
 
-	<?php 
-		
-		function import_data($filename) {
-		    if (filesize($filename) == 0) {
-		        return FALSE;
-		    }
-		    else {
-			    $handle = fopen($filename, "r");
-			    $contents = fread($handle, filesize($filename));
-			    $content_array = explode("\n", $contents);
-			    fclose($handle);
-			    return $content_array;
-		    }
-		}
-
-		function save_file($filename, $items) {
-			$handle = fopen($filename, "w");
-			$contents = implode("\n", $items);
-			fwrite($handle, $contents);
-    		fclose($handle);
-		}
-
-		function add_item(&$items) {
-			$items[] = $_POST['add'];
-		}
-
-		$items = [];
-
-	?>
 	<div id="main" >
 		<h2>This is the TODO List</h2>
 
@@ -93,6 +93,7 @@
 			unset($items[$_GET['remove']]);
 			save_file("data/todo-list.txt", $items);
 			header("Location: todo-list.php");
+			exit;
 		}
 	?>
 		<ul>
