@@ -114,7 +114,7 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
 	    $( "#sortable" ).sortable();
 	    $( "#sortable" ).disableSelection();
 	  });
-  </script>
+    </script>
 </head>
 <body>
 
