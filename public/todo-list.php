@@ -1,5 +1,6 @@
-	<?php 
-		
+<?php 
+
+// loads a text file and returns as an array		
 function import_data($filename) {
     if (filesize($filename) == 0) {
         return FALSE;
@@ -13,6 +14,7 @@ function import_data($filename) {
     }
 }
 
+// saves to a text file as a string
 function save_file($filename, $items) {
 	$handle = fopen($filename, "w");
 	$contents = implode("\n", $items);
@@ -45,7 +47,7 @@ if(isset($_GET['remove'])) {
 	exit(0);
 }
 
-	?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
