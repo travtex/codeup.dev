@@ -1,3 +1,4 @@
+  
 <? 
 
 // loads a text file and returns as an array        
@@ -26,6 +27,18 @@ function add_item(&$items) {
     $items[] = $_POST['add'];
 }
 
+function archive_item($item) {
+    if (filesize("data/todo-archive.txt") == 0) {
+        $handle = fopen("data/todo-archive.txt", "a+");
+        fwrite($handle, $item);
+        fclose($handle);
+    } else {
+        $handle = fopen("data/todo-archive.txt", "a");
+        fwrite($handle, "\n" . $item);
+        fclose($handle);
+    }
+}
+
 $items = [];
 $file_items = [];
 $items = import_data("data/todo-list.txt");
@@ -35,7 +48,12 @@ if(isset($_POST['add']) && !empty($_POST['add'])) {
     save_file("data/todo-list.txt", $items);
 }
 
+$archived_items = null;
+
 if(isset($_GET['remove'])) {
+     $archived_items = $items[$_GET['remove']];
+     archive_item($archived_items);
+
     unset($items[$_GET['remove']]);
     save_file("data/todo-list.txt", $items);
     header("Location: todo-list.php");
@@ -53,8 +71,13 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
         // Move the file from the temp location to our uploads directory
         move_uploaded_file($_FILES['file001']['tmp_name'], $saved_filename);
         $file_items = import_data("uploads/" . $filename);
-        $items = array_merge($items, $file_items);
-        save_file("data/todo-list.txt", $items);
+        if(isset($_POST['overwrite']) && $_POST['overwrite'] == 'on') {
+            $items = $file_items;
+            save_file("data/todo-list.txt", $items);
+        } else {
+            $items = array_merge($items, $file_items);
+            save_file("data/todo-list.txt", $items);
+        }
     } 
 }
 
@@ -125,7 +148,7 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
             <?  if($items) :
 
                 foreach($items as $key => $item) : ?>
-                    <li><?= $item; ?> <small>(<a href="?remove=<?= $key; ?>">Remove Item</a>)</small></li>
+                    <li><?= htmlspecialchars(strip_tags($item)); ?> <small>(<a href="?remove=<?= $key; ?>">Remove Item</a>)</small></li>
                 <? endforeach;
                 else : ?>
                     <li>No Available Items!</li>
@@ -152,6 +175,8 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
                 <label for="file001">Add a .txt file of TODO items: </label>
                 <input type="file" id="file001" name="file001" />
             </p>
+            <p>
+                <label for="overwrite"><input id= "overwrite" type="checkbox" name="overwrite" /> Overwrite all items with file items.</label>
             </div>
         </form>
         
