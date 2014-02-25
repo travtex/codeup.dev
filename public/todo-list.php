@@ -62,7 +62,6 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
 		save_file("data/todo-list.txt", $items);
 	} 
 }
-var_dump($_FILES);
 
 ?>
 <!DOCTYPE html>
