@@ -93,16 +93,21 @@
 
 		$items = import_data("data/todo-list.txt");
 		
-		if(isset($_POST['add'])) {
+		if(isset($_POST['add']) && !empty($_POST['add'])) {
 			add_item($items);
 			save_file("data/todo-list.txt", $items);
 		}
+
+		// if(isset($_POST['mark']) && !empty($_POST['mark'])) {
+		// 	$items[] = "<mark>" . $_POST['mark'] . "</mark>";
+		// 	save_file("data/todo-list.txt", $items);
+		// }
 		
 		if(isset($_GET['remove'])) {
 			unset($items[$_GET['remove']]);
 			save_file("data/todo-list.txt", $items);
 			header("Location: todo-list.php");
-			exit;
+			exit(0);
 		}
 	?>
 		<ul id="sortable">
@@ -121,14 +126,15 @@
 
 	<hr />
 
-		<form method="POST" action="">
+		<form method="POST" action="" name="form1">
 			<div class="form-group">
 			<p>
 				<label for="add">Enter a new list item: </label>
 			</p>
-			<input id="add" class="form-control" name="add" type="text" placeholder="Enter New List Item.">
+			<input id="add" class="form-control" name="add" autofocus="autofocus" type="text" placeholder="Enter New List Item.">
 			<p>
 				<br /><button type="submit" class="btn btn-primary">Add New Item</button>
+				
 			</p>
 			</div>
 		</form>
