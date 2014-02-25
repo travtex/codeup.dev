@@ -1,30 +1,49 @@
 	<?php 
 		
-		function import_data($filename) {
-		    if (filesize($filename) == 0) {
-		        return FALSE;
-		    }
-		    else {
-			    $handle = fopen($filename, "r");
-			    $contents = fread($handle, filesize($filename));
-			    $content_array = explode("\n", $contents);
-			    fclose($handle);
-			    return $content_array;
-		    }
-		}
+function import_data($filename) {
+    if (filesize($filename) == 0) {
+        return FALSE;
+    }
+    else {
+	    $handle = fopen($filename, "r");
+	    $contents = fread($handle, filesize($filename));
+	    $content_array = explode("\n", $contents);
+	    fclose($handle);
+	    return $content_array;
+    }
+}
 
-		function save_file($filename, $items) {
-			$handle = fopen($filename, "w");
-			$contents = implode("\n", $items);
-			fwrite($handle, $contents);
-    		fclose($handle);
-		}
+function save_file($filename, $items) {
+	$handle = fopen($filename, "w");
+	$contents = implode("\n", $items);
+	fwrite($handle, $contents);
+	fclose($handle);
+}
 
-		function add_item(&$items) {
-			$items[] = $_POST['add'];
-		}
+function add_item(&$items) {
+	$items[] = $_POST['add'];
+}
 
-		$items = [];
+$items = [];
+
+$items = import_data("data/todo-list.txt");
+
+if(isset($_POST['add']) && !empty($_POST['add'])) {
+	add_item($items);
+	save_file("data/todo-list.txt", $items);
+}
+
+// if(isset($_POST['mark']) && !empty($_POST['mark'])) {
+// 	$items[] = "<mark>" . $_POST['mark'] . "</mark>";
+// 	save_file("data/todo-list.txt", $items);
+// }
+
+if(isset($_GET['remove'])) {
+	unset($items[$_GET['remove']]);
+	save_file("data/todo-list.txt", $items);
+	header("Location: todo-list.php");
+	exit(0);
+}
 
 	?>
 <!DOCTYPE html>
@@ -89,27 +108,6 @@
 	<div id="main" >
 		<h2>This is the TODO List</h2>
 
-	<?php
-
-		$items = import_data("data/todo-list.txt");
-		
-		if(isset($_POST['add']) && !empty($_POST['add'])) {
-			add_item($items);
-			save_file("data/todo-list.txt", $items);
-		}
-
-		// if(isset($_POST['mark']) && !empty($_POST['mark'])) {
-		// 	$items[] = "<mark>" . $_POST['mark'] . "</mark>";
-		// 	save_file("data/todo-list.txt", $items);
-		// }
-		
-		if(isset($_GET['remove'])) {
-			unset($items[$_GET['remove']]);
-			save_file("data/todo-list.txt", $items);
-			header("Location: todo-list.php");
-			exit(0);
-		}
-	?>
 		<ul id="sortable">
 			<?php 
 
