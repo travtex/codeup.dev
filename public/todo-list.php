@@ -35,11 +35,6 @@ if(isset($_POST['add']) && !empty($_POST['add'])) {
 	save_file("data/todo-list.txt", $items);
 }
 
-// if(isset($_POST['mark']) && !empty($_POST['mark'])) {
-// 	$items[] = "<mark>" . $_POST['mark'] . "</mark>";
-// 	save_file("data/todo-list.txt", $items);
-// }
-
 if(isset($_GET['remove'])) {
 	unset($items[$_GET['remove']]);
 	save_file("data/todo-list.txt", $items);
