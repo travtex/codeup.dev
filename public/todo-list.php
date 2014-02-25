@@ -1,4 +1,4 @@
-<?php 
+<? 
 
 // loads a text file and returns as an array		
 function import_data($filename) {
@@ -127,18 +127,16 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
 		<h2>This is the TODO List</h2>
 
 		<ul id="sortable">
-			<?php 
+			<?	if($items) :
 
-			if($items){
-
-				foreach($items as $key => $item) { ?>
-				<li><?php echo $item; ?> <small>(<a href="?remove=<?php echo $key; ?>">Remove Item</a>)</small></li>
-			<?php }
-			} else { ?>
-				<li>No Available Items!</li>
-				<?php } ?>
+				foreach($items as $key => $item) : ?>
+					<li><?= $item; ?> <small>(<a href="?remove=<?= $key; ?>">Remove Item</a>)</small></li>
+				<? endforeach;
+				else : ?>
+					<li>No Available Items!</li>
+					<? endif; ?>
 		</ul>
-		<p><mark>Total Items: <?php echo count($items); ?></mark></p>
+		<p><mark>Total Items: <?= count($items); ?></mark></p>
 
 	<hr />
 
@@ -153,10 +151,9 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
 				
 			</p>
 			<p>
-				<?php 
-				if(count($_FILES) > 0 && $_FILES['file001']['name'] != "" && $_FILES['file001']['type'] !== 'text/plain') {
+				<? if(count($_FILES) > 0 && $_FILES['file001']['name'] != "" && $_FILES['file001']['type'] !== 'text/plain') :
 					echo "<p><mark>Uploaded files must be plain text.</mark></p>";
-				} ?>
+				endif; ?>
 				<label for="file001">Add a .txt file of TODO items: </label>
 				<input type="file" id="file001" name="file001" />
 			</p>
