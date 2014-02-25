@@ -27,7 +27,7 @@ function add_item(&$items) {
 }
 
 $items = [];
-
+$file_items = [];
 $items = import_data("data/todo-list.txt");
 
 if(isset($_POST['add']) && !empty($_POST['add'])) {
@@ -46,6 +46,23 @@ if(isset($_GET['remove'])) {
 	header("Location: todo-list.php");
 	exit(0);
 }
+
+if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
+	if($_FILES['file001']['type'] == 'text/plain') {
+	    // Set the destination directory for uploads
+	    $upload_dir = '/vagrant/sites/codeup.dev/public/uploads/';
+	    // Grab the filename from the uploaded file by using basename
+	    $filename = basename($_FILES['file001']['name']);
+	    // Create the saved filename using the file's original name and our upload directory
+	    $saved_filename = $upload_dir . $filename;
+	    // Move the file from the temp location to our uploads directory
+	    move_uploaded_file($_FILES['file001']['tmp_name'], $saved_filename);
+	    $file_items = import_data("uploads/" . $filename);
+		$items = array_merge($items, $file_items);
+		save_file("data/todo-list.txt", $items);
+	} 
+}
+var_dump($_FILES);
 
 ?>
 <!DOCTYPE html>
@@ -126,7 +143,7 @@ if(isset($_GET['remove'])) {
 
 	<hr />
 
-		<form method="POST" action="" name="form1">
+		<form method="POST" enctype="multipart/form-data" action="" name="form1">
 			<div class="form-group">
 			<p>
 				<label for="add">Enter a new list item: </label>
@@ -135,6 +152,14 @@ if(isset($_GET['remove'])) {
 			<p>
 				<br /><button type="submit" class="btn btn-primary">Add New Item</button>
 				
+			</p>
+			<p>
+				<?php 
+				if(count($_FILES) > 0 && $_FILES['file001']['name'] != "" && $_FILES['file001']['type'] !== 'text/plain') {
+					echo "<p><mark>Uploaded files must be plain text.</mark></p>";
+				} ?>
+				<label for="file001">Add a .txt file of TODO items: </label>
+				<input type="file" id="file001" name="file001" />
 			</p>
 			</div>
 		</form>
