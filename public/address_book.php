@@ -36,6 +36,7 @@ if(isset($_POST)) {
 	fclose($handle);
 }
 
+var_dump($address_array);
 var_dump($new_address);
 
 ?>
@@ -63,13 +64,15 @@ var_dump($new_address);
 			<td>Zip</td>
 			<td>Phone</td>
 		</tr>
-		<tr>
-		<? foreach($address_array as $address => $value): ?>
-		
-			<td><?= $value; ?></td>
+		<? if(!empty($address_array)): ?>
+			<tr>
+			<? foreach($address_array as $address => $value): ?>
 			
-		<? endforeach; ?>
-		</tr>
+				<td><?= $value; ?></td>
+				
+			<? endforeach; ?>
+			</tr>
+		<? endif; ?>
 	
 
 	</table>
