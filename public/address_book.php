@@ -49,6 +49,26 @@ var_dump($address);
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 </head>
 <body>
+	<h2>Address Book</h2>
+	<table class="table">
+		<tr>
+			<td>Name</td>
+			<td>Address</td>
+			<td>City</td>
+			<td>State</td>
+			<td>Zip</td>
+			<td>Phone</td>
+		</tr>
+		<tr>
+		<? foreach($address as $key => $value): ?>
+		
+			<td><?= $value; ?></td>
+			
+		<? endforeach; ?>
+		</tr>
+	
+
+	</table>
 	<hr />
 	<form method="POST" enctype="multipart/form-data" action="" name="form1">
         <div class="form-group">
