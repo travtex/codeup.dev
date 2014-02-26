@@ -4,11 +4,19 @@ var_dump($_POST);
 
 $address = [];
 
-function new_address($address){
+function new_address(&$address){
 	$address[] = $_POST;
 }
 
+function save_file($filename, $address) {
+    $handle = fopen($filename, "a");
+    foreach($address as $fields) {
+    	fputcsv($handle, $fields);
+    }
+}
 
+new_address($address);
+save_file("data/address_book.csv", $address);
 
 ?>
 
