@@ -19,25 +19,17 @@ function new_address(&$address){
 	$address[] = $_POST;
 }
 
-function save_file($filename, $address) {
-    $handle = fopen($filename, "a");
-    foreach($address as $fields) {
-    	fputcsv($handle, $fields);
-    }
-    fclose($handle);
-}
-
 $address_array = import_data($filename);
 
 if(isset($_POST)) {
 	$new_address = $_POST;
-	$handle = fopen($filename, "a");
+	// var_dump($new_address);
+	$handle = fopen($filename, "w");
 	fputcsv($handle, $new_address);
+	// }
 	fclose($handle);
 }
 
-var_dump($address_array);
-var_dump($new_address);
 
 ?>
 
