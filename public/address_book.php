@@ -1,33 +1,28 @@
 <?php 
 
+$new_entry = [];
 $address_array = [];
 $filename = "data/address_book.csv";
 
-function import_data($filename) {
-    if (filesize($filename) == 0) {
-        return FALSE;
-    }
-    else {
-        $handle = fopen($filename, "r");
-        $contents = fgetcsv($handle, filesize($filename));
-        fclose($handle);
-        return $contents;
-    }
-}
-
-function new_address(&$address){
-	$address[] = $_POST;
-}
-
-$address_array = import_data($filename);
-
-if(isset($_POST)) {
-	$new_address = $_POST;
-	// var_dump($new_address);
-	$handle = fopen($filename, "w");
-	fputcsv($handle, $new_address);
-	// }
+function save_addresses($filename, $address_array){
+	$handle = fopen($filename, "a+");
+	foreach($address_array as $fields){
+		fputcsv($handle, $fields);
+	}
 	fclose($handle);
+}
+
+if(!empty($_POST)){
+	$new_entry = [
+		htmlspecialchars(strip_tags($_POST['name'])),
+		htmlspecialchars(strip_tags($_POST['address'])),
+		htmlspecialchars(strip_tags($_POST['city'])),
+		htmlspecialchars(strip_tags($_POST['state'])),
+		htmlspecialchars(strip_tags($_POST['zip'])),
+		htmlspecialchars(strip_tags($_POST['phone']))
+		];
+	$address_array[] = $new_entry;
+	save_addresses($filename, $address_array);
 }
 
 
@@ -57,13 +52,13 @@ if(isset($_POST)) {
 			<td>Phone</td>
 		</tr>
 		<? if(!empty($address_array)): ?>
+			<? foreach($address_array as $address): ?>
 			<tr>
-			<? foreach($address_array as $address => $value): ?>
-			
+				<? foreach($address as $value): ?>
 				<td><?= $value; ?></td>
-				
-			<? endforeach; ?>
+				<? endforeach; ?>
 			</tr>
+			<? endforeach; ?>
 		<? endif; ?>
 	
 
