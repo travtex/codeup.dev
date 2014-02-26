@@ -1,8 +1,18 @@
 <?php 
 
-var_dump($_POST);
-
 $address = [];
+
+function import_data($filename) {
+    if (filesize($filename) == 0) {
+        return FALSE;
+    }
+    else {
+        $handle = fopen($filename, "r");
+        $contents = fgetcsv($handle, filesize($filename));
+        fclose($handle);
+        return $contents;
+    }
+}
 
 function new_address(&$address){
 	$address[] = $_POST;
@@ -13,10 +23,11 @@ function save_file($filename, $address) {
     foreach($address as $fields) {
     	fputcsv($handle, $fields);
     }
+    fclose($handle);
 }
 
-new_address($address);
-save_file("data/address_book.csv", $address);
+$address = import_data("data/address_book.csv");
+var_dump($address);
 
 ?>
 
