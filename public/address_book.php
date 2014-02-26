@@ -5,8 +5,18 @@ $address_array = [];
 $errors = [];
 $filename = "data/address_book.csv";
 
+function import_addresses($filename){
+	$contents = [];
+	$handle = fopen($filename, "r");
+	while(($data = fgetcsv($handle)) !== FALSE) {
+		$contents[] = $data;
+	}
+	fclose($handle);
+	return $contents;
+}
+
 function save_addresses($filename, $address_array){
-	$handle = fopen($filename, "a+");
+	$handle = fopen($filename, "w");
 	foreach($address_array as $fields){
 		fputcsv($handle, $fields);
 	}
@@ -24,6 +34,11 @@ function set_entry($array) {
 		];
 	return $entry;
 }
+if (file_exists($filename)) {
+	$address_array = import_addresses($filename);
+} else {
+	$address_array = [];
+}
 
 if(!empty($_POST)){
 	$new_entry = set_entry($_POST);
@@ -39,8 +54,6 @@ if(!empty($_POST)){
 	save_addresses($filename, $address_array);
 	}
 }
-var_dump($new_entry);
-var_dump($errors);
 
 ?>
 
@@ -101,7 +114,7 @@ var_dump($errors);
         		<input type="text" class="form-control" name="phone" id="phone" placeholder="Phone." />
         	</label><br /><br />
 		    <? if(!empty($errors)) : ?>
-		    <p>Required Fields: <mark> <? foreach($errors as $error) : ?>
+		    <p>Missing Fields: <mark> <? foreach($errors as $error) : ?>
 		    				<?= $error ?>
 		    			<? endforeach; ?></mark></p>
     		<? endif; ?>
