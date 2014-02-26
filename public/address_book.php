@@ -1,6 +1,6 @@
 <?php 
 
-$address = [];
+$address_array = [];
 $filename = "data/address_book.csv";
 
 function import_data($filename) {
@@ -27,12 +27,16 @@ function save_file($filename, $address) {
     fclose($handle);
 }
 
-// $address = import_data("data/address_book.csv");
+$address_array = import_data($filename);
 
-// new_address($address);
-// save_file($filename, $address);
-$address = import_data($filename);
-var_dump($address);
+if(isset($_POST)) {
+	$new_address = $_POST;
+	$handle = fopen($filename, "a");
+	fputcsv($handle, $new_address);
+	fclose($handle);
+}
+
+var_dump($new_address);
 
 ?>
 
@@ -60,7 +64,7 @@ var_dump($address);
 			<td>Phone</td>
 		</tr>
 		<tr>
-		<? foreach($address as $key => $value): ?>
+		<? foreach($address_array as $address => $value): ?>
 		
 			<td><?= $value; ?></td>
 			
