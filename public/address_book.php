@@ -2,6 +2,7 @@
 
 $new_entry = [];
 $address_array = [];
+$errors = [];
 $filename = "data/address_book.csv";
 
 function save_addresses($filename, $address_array){
@@ -12,19 +13,34 @@ function save_addresses($filename, $address_array){
 	fclose($handle);
 }
 
-if(!empty($_POST)){
-	$new_entry = [
-		htmlspecialchars(strip_tags($_POST['name'])),
-		htmlspecialchars(strip_tags($_POST['address'])),
-		htmlspecialchars(strip_tags($_POST['city'])),
-		htmlspecialchars(strip_tags($_POST['state'])),
-		htmlspecialchars(strip_tags($_POST['zip'])),
-		htmlspecialchars(strip_tags($_POST['phone']))
+function set_entry($array) {
+	$entry = [
+		htmlspecialchars(strip_tags($array['name'])),
+		htmlspecialchars(strip_tags($array['address'])),
+		htmlspecialchars(strip_tags($array['city'])),
+		htmlspecialchars(strip_tags($array['state'])),
+		htmlspecialchars(strip_tags($array['zip'])),
+		htmlspecialchars(strip_tags($array['phone']))
 		];
-	$address_array[] = $new_entry;
-	save_addresses($filename, $address_array);
+	return $entry;
 }
 
+if(!empty($_POST)){
+	$new_entry = set_entry($_POST);
+	if(empty($new_entry[0]) || empty($new_entry[1]) || empty($new_entry[2])
+		|| empty($new_entry[3]) || empty($new_entry[4])) {
+	empty($new_entry[0]) ? $errors[] = "Name" : false;
+	empty($new_entry[1]) ? $errors[] = "Address" : false;
+	empty($new_entry[2]) ? $errors[] = "City" : false;
+	empty($new_entry[3]) ? $errors[] = "State" : false;
+	empty($new_entry[4]) ? $errors[] = "Zip" : false;
+	} else {
+	$address_array[] = $new_entry;
+	save_addresses($filename, $address_array);
+	}
+}
+var_dump($new_entry);
+var_dump($errors);
 
 ?>
 
@@ -67,25 +83,31 @@ if(!empty($_POST)){
 	<form method="POST" enctype="multipart/form-data" action="" name="form1">
         <div class="form-group">
         	<label for="name">Name: 
-        		<input type="text" class="form-control" name="name" id="name" placeholder="Name." required />
+        		<input type="text" class="form-control" name="name" id="name" placeholder="Name." />
         	</label><br />
         	<label for="address">Address: 
-        		<input type="text" class="form-control" name="address" id="address" placeholder="Address." required />
+        		<input type="text" class="form-control" name="address" id="address" placeholder="Address." />
         	</label><br />
         	<label for="city">City: 
-        		<input type="text" class="form-control" name="city" id="city" placeholder="City." required />
+        		<input type="text" class="form-control" name="city" id="city" placeholder="City." />
         	</label><br />
         	<label for="state">State: 
-        		<input type="text" class="form-control" name="state" id="state" placeholder="State." required />
+        		<input type="text" class="form-control" name="state" id="state" placeholder="State." />
         	</label><br />
         	<label for="zip">Zip: 
-        		<input type="text" class="form-control" name="zip" id="zip" placeholder="Zip." required />
+        		<input type="text" class="form-control" name="zip" id="zip" placeholder="Zip." />
         	</label><br />
         	<label for="phone">Phone: 
         		<input type="text" class="form-control" name="phone" id="phone" placeholder="Phone." />
         	</label><br /><br />
+		    <? if(!empty($errors)) : ?>
+		    <p>Required Fields: <mark> <? foreach($errors as $error) : ?>
+		    				<?= $error ?>
+		    			<? endforeach; ?></mark></p>
+    		<? endif; ?>
         	<button type="submit" class="btn btn-primary">Add New Address</button>
         </div>
     </form>
+
 </body>
 </html>
