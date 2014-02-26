@@ -1,6 +1,7 @@
 <?php 
 
 $address = [];
+$filename = "data/address_book.csv";
 
 function import_data($filename) {
     if (filesize($filename) == 0) {
@@ -26,7 +27,11 @@ function save_file($filename, $address) {
     fclose($handle);
 }
 
-$address = import_data("data/address_book.csv");
+// $address = import_data("data/address_book.csv");
+
+// new_address($address);
+// save_file($filename, $address);
+$address = import_data($filename);
 var_dump($address);
 
 ?>
