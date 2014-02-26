@@ -1,4 +1,5 @@
 Take out the trash
 Make the bed
-Make the bed
-Take out the trash
+Buy some milk
+Train a Markov chain
+Teach the dog binary
