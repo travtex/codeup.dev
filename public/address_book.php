@@ -1,3 +1,18 @@
+<?php 
+
+var_dump($_POST);
+
+$address = [];
+
+function new_address($address){
+	$address[] = $_POST;
+}
+
+
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,19 +29,19 @@
 	<form method="POST" enctype="multipart/form-data" action="" name="form1">
         <div class="form-group">
         	<label for="name">Name: 
-        		<input type="text" class="form-control" name="name" id="name" placeholder="Name." />
+        		<input type="text" class="form-control" name="name" id="name" placeholder="Name." required />
         	</label><br />
         	<label for="address">Address: 
-        		<input type="text" class="form-control" name="address" id="address" placeholder="Address." />
+        		<input type="text" class="form-control" name="address" id="address" placeholder="Address." required />
         	</label><br />
         	<label for="city">City: 
-        		<input type="text" class="form-control" name="city" id="city" placeholder="City." />
+        		<input type="text" class="form-control" name="city" id="city" placeholder="City." required />
         	</label><br />
         	<label for="state">State: 
-        		<input type="text" class="form-control" name="state" id="state" placeholder="State." />
+        		<input type="text" class="form-control" name="state" id="state" placeholder="State." required />
         	</label><br />
         	<label for="zip">Zip: 
-        		<input type="text" class="form-control" name="zip" id="zip" placeholder="Zip." />
+        		<input type="text" class="form-control" name="zip" id="zip" placeholder="Zip." required />
         	</label><br />
         	<label for="phone">Phone: 
         		<input type="text" class="form-control" name="phone" id="phone" placeholder="Phone." />
