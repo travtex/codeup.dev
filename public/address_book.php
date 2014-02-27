@@ -87,6 +87,14 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
         // Move the file from the temp location to our uploads directory
         move_uploaded_file($_FILES['file001']['tmp_name'], $saved_filename);
         $new_addresses = new AddressDataStore("uploads/" . $filename);
+
+        // if(isset($_POST['overwrite']) && $_POST['overwrite'] == 'on') {
+        //     $address_array = $new_addresses->read_address_book();
+        //     $new_addresses->write_address_book($address_array);
+        // } else {
+             $address_array = array_merge($address_array, $new_addresses->read_address_book());
+             $new_addresses->write_address_book($address_array);
+        //}
     } 
 }
 
@@ -208,8 +216,24 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
     		<? endif; ?>
         	<button type="submit" class="btn btn-primary">Add New Address</button>
         </div>
-        </div>
     </form>
+    <form method="POST" enctype="multipart/form-data" action="" name="form2">
+    	<div class="form-group">
+        	<p>
+                <? if(count($_FILES) > 0 && $_FILES['file001']['name'] != "" && $_FILES['file001']['type'] !== 'text/csv') :
+                    echo "<p><mark>Uploaded files must be in .csv format.</mark></p>";
+                endif; ?>
+                <label for="file001">Add a .csv file of Addresses: </label>
+                <input type="file" id="file001" name="file001" />
+            </p>
+            <p>
+                <label for="overwrite"><input id= "overwrite" type="checkbox" name="overwrite" /> Overwrite all items with file items.
+                </label>
+             </p>
+             <button type="submit" class="btn btn-warning">Add From File</button>
+         </div>
 
+	    </div>
+<? var_dump($new_addresses->filename); ?>
 </body>
 </html>
