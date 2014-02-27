@@ -1,7 +1,6 @@
 <?php 
 
 $new_entry = [];
-$address_array = [];
 $errors = [];
 $filename = "data/address_book.csv";
 
@@ -21,7 +20,7 @@ class AddressDataStore {
     function write_address_book($addresses_array) {
         // Code to write $addresses_array to file $this->filename
         $handle = fopen($this->filename, "w");
-        foreach($address_array as $fields) {
+        foreach($addresses_array as $fields) {
         	fputcsv($handle, $fields);
         }
         fclose($handle);
@@ -31,26 +30,6 @@ class AddressDataStore {
 
 $address_book = new AddressDataStore();
 $address_book->filename = "data/address_book.csv";
-
-// Load .csv file of addresses
-// function import_addresses($filename){
-// 	$contents = [];
-// 	$handle = fopen($filename, "r");
-// 	while(($data = fgetcsv($handle)) !== FALSE) {
-// 		$contents[] = $data;
-// 	}
-// 	fclose($handle);
-// 	return $contents;
-// }
-
-// Save addresses to .csv file
-// function save_addresses($filename, $address_array){
-// 	$handle = fopen($filename, "w");
-// 	foreach($address_array as $fields){
-// 		fputcsv($handle, $fields);
-// 	}
-// 	fclose($handle);
-// }
 
 // Set an array to a new entry
 function set_entry($array) {
@@ -67,7 +46,7 @@ function set_entry($array) {
 
 // Loads address .csv file, or empty array if absent
 if (file_exists($filename)) {
-	$address_array = import_addresses($filename);
+	$address_array = $address_book->read_address_book();
 } else {
 	$address_array = [];
 }
@@ -85,14 +64,14 @@ if(!empty($_POST)){
 	empty($new_entry[4]) ? $errors[] = "Zip" : false;
 	} else {
 	$address_array[] = $new_entry;
-	save_addresses($filename, $address_array);
+	$address_book->write_address_book($address_array);
 	}
 }
 
 // Delete entries and save to .csv
 if(isset($_GET['remove'])){
 	unset($address_array[$_GET['remove']]);
-	save_addresses($filename, $address_array);
+	$address_book->write_address_book($address_array);
 	header("Location: address_book.php");
 	exit(0);
 }
