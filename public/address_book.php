@@ -5,25 +5,52 @@ $address_array = [];
 $errors = [];
 $filename = "data/address_book.csv";
 
-// Load .csv file of addresses
-function import_addresses($filename){
-	$contents = [];
-	$handle = fopen($filename, "r");
-	while(($data = fgetcsv($handle)) !== FALSE) {
-		$contents[] = $data;
-	}
-	fclose($handle);
-	return $contents;
+class AddressDataStore {
+	public $filename='';
+	function read_address_book() {
+        // Code to read file $this->filename
+        $contents = [];
+        $handle = fopen($this->filename, "r");
+        while(($data = fgetcsv($handle)) !== FALSE) {
+        	$contents[] = $data;
+        }
+        fclose($handle);
+        return $contents;
+    }
+
+    function write_address_book($addresses_array) {
+        // Code to write $addresses_array to file $this->filename
+        $handle = fopen($this->filename, "w");
+        foreach($address_array as $fields) {
+        	fputcsv($handle, $fields);
+        }
+        fclose($handle);
+    }
+
 }
 
+$address_book = new AddressDataStore();
+$address_book->filename = "data/address_book.csv";
+
+// Load .csv file of addresses
+// function import_addresses($filename){
+// 	$contents = [];
+// 	$handle = fopen($filename, "r");
+// 	while(($data = fgetcsv($handle)) !== FALSE) {
+// 		$contents[] = $data;
+// 	}
+// 	fclose($handle);
+// 	return $contents;
+// }
+
 // Save addresses to .csv file
-function save_addresses($filename, $address_array){
-	$handle = fopen($filename, "w");
-	foreach($address_array as $fields){
-		fputcsv($handle, $fields);
-	}
-	fclose($handle);
-}
+// function save_addresses($filename, $address_array){
+// 	$handle = fopen($filename, "w");
+// 	foreach($address_array as $fields){
+// 		fputcsv($handle, $fields);
+// 	}
+// 	fclose($handle);
+// }
 
 // Set an array to a new entry
 function set_entry($array) {
