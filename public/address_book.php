@@ -7,7 +7,6 @@ $filename = "data/address_book.csv";
 class AddressDataStore {
 	public $filename='';
 	function read_address_book() {
-        // Code to read file $this->filename
         $contents = [];
         $handle = fopen($this->filename, "r");
         while(($data = fgetcsv($handle)) !== FALSE) {
@@ -18,7 +17,6 @@ class AddressDataStore {
     }
 
     function write_address_book($addresses_array) {
-        // Code to write $addresses_array to file $this->filename
         $handle = fopen($this->filename, "w");
         foreach($addresses_array as $fields) {
         	fputcsv($handle, $fields);
