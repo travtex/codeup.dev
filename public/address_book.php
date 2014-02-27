@@ -27,7 +27,7 @@ class AddressDataStore {
 }
 
 $address_book = new AddressDataStore();
-$address_book->filename = "data/address_book.csv";
+$address_book->filename = $filename;
 
 // Set an array to a new entry
 function set_entry($array) {
@@ -148,6 +148,7 @@ if(isset($_GET['remove'])) {
 				<td><a href="?remove=<?= $key ?>">X</a></td>
 			</tr>
 			<? endforeach; ?>
+		<? // @todo else show "No Addresses" ?>
 		<? endif; ?>
 	
 
@@ -156,7 +157,7 @@ if(isset($_GET['remove'])) {
 	<form method="POST" enctype="multipart/form-data" action="" name="form1">
         <div class="form-group">
         	<label for="name">Name: 
-        		<input type="text" class="form-control" name="name" id="name" placeholder="Name." />
+        		<input type="text" class="form-control" name="name" id="name" placeholder="Name." value="<? // $_POST['name']; ?>" />
         	</label><br />
         	<label for="address">Address: 
         		<input type="text" class="form-control" name="address" id="address" placeholder="Address." />
