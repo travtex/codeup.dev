@@ -78,23 +78,17 @@ if(isset($_GET['remove'])) {
 
 if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
     if($_FILES['file001']['type'] == 'text/csv') {
-        // Set the destination directory for uploads
-        $upload_dir = '/vagrant/sites/codeup.dev/public/uploads/';
-        // Grab the filename from the uploaded file by using basename
-        $filename = basename($_FILES['file001']['name']);
-        // Create the saved filename using the file's original name and our upload directory
-        $saved_filename = $upload_dir . $filename;
-        // Move the file from the temp location to our uploads directory
-        move_uploaded_file($_FILES['file001']['tmp_name'], $saved_filename);
-        $new_addresses = new AddressDataStore("uploads/" . $filename);
-
-        // if(isset($_POST['overwrite']) && $_POST['overwrite'] == 'on') {
-        //     $address_array = $new_addresses->read_address_book();
-        //     $new_addresses->write_address_book($address_array);
-        // } else {
-             $address_array = array_merge($address_array, $new_addresses->read_address_book());
-             $new_addresses->write_address_book($address_array);
-        //}
+         // Set the destination directory for uploads
+         $upload_dir = '/vagrant/sites/codeup.dev/public/uploads/';
+         // Grab the filename from the uploaded file by using basename
+         $filename = basename($_FILES['file001']['name']);
+         // Create the saved filename using the file's original name and our upload directory
+         $saved_filename = $upload_dir . $filename;
+         // Move the file from the temp location to our uploads directory
+         move_uploaded_file($_FILES['file001']['tmp_name'], $saved_filename);
+         $new_addresses = new AddressDataStore("uploads/" . $filename);
+	     $address_array = array_merge($address_array, $new_addresses->read_address_book());
+	     $address_book->write_address_book($address_array);
     } 
 }
 
@@ -226,14 +220,9 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
                 <label for="file001">Add a .csv file of Addresses: </label>
                 <input type="file" id="file001" name="file001" />
             </p>
-            <p>
-                <label for="overwrite"><input id= "overwrite" type="checkbox" name="overwrite" /> Overwrite all items with file items.
-                </label>
-             </p>
              <button type="submit" class="btn btn-warning">Add From File</button>
          </div>
 
 	    </div>
-<? var_dump($new_addresses->filename); ?>
 </body>
 </html>
