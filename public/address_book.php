@@ -10,7 +10,7 @@ class AddressDataStore {
 	function __construct($filename = '') {
 		$this->filename = $filename;
 	}
-	
+
 	function read_address_book() {
         $contents = [];
         $handle = fopen($this->filename, "r");
@@ -75,6 +75,21 @@ if(isset($_GET['remove'])) {
 	header("Location: address_book.php");
 	exit(0);
 }
+
+if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
+    if($_FILES['file001']['type'] == 'text/csv') {
+        // Set the destination directory for uploads
+        $upload_dir = '/vagrant/sites/codeup.dev/public/uploads/';
+        // Grab the filename from the uploaded file by using basename
+        $filename = basename($_FILES['file001']['name']);
+        // Create the saved filename using the file's original name and our upload directory
+        $saved_filename = $upload_dir . $filename;
+        // Move the file from the temp location to our uploads directory
+        move_uploaded_file($_FILES['file001']['tmp_name'], $saved_filename);
+        $new_addresses = new AddressDataStore("uploads/" . $filename);
+    } 
+}
+
 
 ?>
 
