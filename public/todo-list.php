@@ -87,47 +87,8 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
 <head>
     <meta charset="UTF-8">
     <title>TODO List</title>
-    <style type="text/css">
-    html {
-        height: 100%;
-    }
-    body {
-        background-image: url('img/dark-blue-background.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
-        margin: 20px;
-    }
-    hr {
-        height: 2px;
-        border-color: teal !important;
-        border-width: 2px !important;
-    }
-    div {
-        padding: 20px;
-        border-radius: 20px;
-
-    }
-
-    #main {
-        background: -webkit-radial-gradient(left top, lightsteelblue, white);
-        margin: 20px auto;
-        width: 85%;
-        border-style:groove;
-        border-width: 3px;
-        border-color: teal;
-    }
-
-    #main h2{
-        color: darkgreen;
-    }
-
-    ul {
-        font-size: 14pt;
-    }
-
-    </style>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/default.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>

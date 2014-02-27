@@ -1,0 +1,37 @@
+html {
+        height: 100%;
+    }
+    body {
+        background-image: url('../img/dark-blue-background.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        margin: 20px;
+    }
+    hr {
+        height: 2px;
+        border-color: teal !important;
+        border-width: 2px !important;
+    }
+    div {
+        padding: 20px;
+        border-radius: 20px;
+
+    }
+
+    #main {
+        background: -webkit-radial-gradient(left top, lightsteelblue, white);
+        margin: 20px auto;
+        width: 85%;
+        border-style:groove;
+        border-width: 3px;
+        border-color: teal;
+    }
+
+    #main h2{
+        color: darkgreen;
+    }
+
+    ul {
+        font-size: 14pt;
+    }
