@@ -5,6 +5,7 @@ $address_array = [];
 $errors = [];
 $filename = "data/address_book.csv";
 
+// Load .csv file of addresses
 function import_addresses($filename){
 	$contents = [];
 	$handle = fopen($filename, "r");
@@ -15,6 +16,7 @@ function import_addresses($filename){
 	return $contents;
 }
 
+// Save addresses to .csv file
 function save_addresses($filename, $address_array){
 	$handle = fopen($filename, "w");
 	foreach($address_array as $fields){
@@ -23,6 +25,7 @@ function save_addresses($filename, $address_array){
 	fclose($handle);
 }
 
+// Set an array to a new entry
 function set_entry($array) {
 	$entry = [
 		htmlspecialchars(strip_tags($array['name'])),
@@ -34,12 +37,16 @@ function set_entry($array) {
 		];
 	return $entry;
 }
+
+// Loads address .csv file, or empty array if absent
 if (file_exists($filename)) {
 	$address_array = import_addresses($filename);
 } else {
 	$address_array = [];
 }
 
+
+// Validate $_POST data, push new entry to array, save to .csv
 if(!empty($_POST)){
 	$new_entry = set_entry($_POST);
 	if(empty($new_entry[0]) || empty($new_entry[1]) || empty($new_entry[2])
@@ -55,6 +62,7 @@ if(!empty($_POST)){
 	}
 }
 
+// Delete entries and save to .csv
 if(isset($_GET['remove'])){
 	unset($address_array[$_GET['remove']]);
 	save_addresses($filename, $address_array);
