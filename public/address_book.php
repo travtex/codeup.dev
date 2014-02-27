@@ -92,7 +92,6 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
     } 
 }
 
-
 ?>
 
 
@@ -184,7 +183,6 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
             </p>
              <button type="submit" class="btn btn-warning">Add From File</button>
          </div>
-
 	    </div>
 </body>
 </html>

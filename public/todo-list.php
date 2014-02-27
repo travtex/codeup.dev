@@ -138,9 +138,9 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
             </p>
             <p>
                 <label for="overwrite"><input id= "overwrite" type="checkbox" name="overwrite" /> Overwrite all items with file items.</label>
+        
             </div>
         </form>
-        
     </div>
 </body>
 </html>
