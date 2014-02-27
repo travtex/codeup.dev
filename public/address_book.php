@@ -61,6 +61,7 @@ if(!empty($_POST)) {
 	} else {
 	$address_array[] = $new_entry;
 	$address_book->write_address_book($address_array);
+	$new_entry = [];
 	}
 }
 
@@ -147,7 +148,10 @@ if(isset($_GET['remove'])) {
 				<td><a href="?remove=<?= $key ?>">X</a></td>
 			</tr>
 			<? endforeach; ?>
-		<? // @todo else show "No Addresses" ?>
+		<? else: ?>
+			<tr>
+				<td style="text-align:center;"><strong>No Addresses Available</strong></td>
+			</tr>
 		<? endif; ?>
 	
 
@@ -156,22 +160,28 @@ if(isset($_GET['remove'])) {
 	<form method="POST" enctype="multipart/form-data" action="" name="form1">
         <div class="form-group">
         	<label for="name">Name: 
-        		<input type="text" class="form-control" name="name" id="name" placeholder="Name." value="<? // $_POST['name']; ?>" />
+        		<input type="text" class="form-control" name="name" id="name" placeholder="Name."
+        		<? if(!empty($new_entry[0])): ?> value="<?= $new_entry[0]; endif;?>" />
         	</label><br />
         	<label for="address">Address: 
-        		<input type="text" class="form-control" name="address" id="address" placeholder="Address." />
+        		<input type="text" class="form-control" name="address" id="address" placeholder="Address." 
+        		<? if(!empty($new_entry[1])): ?> value="<?= $new_entry[1]; endif; ?>"/>
         	</label><br />
         	<label for="city">City: 
-        		<input type="text" class="form-control" name="city" id="city" placeholder="City." />
+        		<input type="text" class="form-control" name="city" id="city" placeholder="City." 
+        		<? if(!empty($new_entry[2])): ?> value="<?= $new_entry[2]; endif; ?>"/>
         	</label><br />
         	<label for="state">State: 
-        		<input type="text" class="form-control" name="state" id="state" placeholder="State." />
+        		<input type="text" class="form-control" name="state" id="state" placeholder="State." 
+        		<? if(!empty($new_entry[3])): ?> value="<?= $new_entry[3]; endif; ?>"/>
         	</label><br />
         	<label for="zip">Zip: 
-        		<input type="text" class="form-control" name="zip" id="zip" placeholder="Zip." />
+        		<input type="text" class="form-control" name="zip" id="zip" placeholder="Zip."
+        		<? if(!empty($new_entry[4])): ?> value="<?= $new_entry[4]; endif; ?>" />
         	</label><br />
         	<label for="phone">Phone: 
-        		<input type="text" class="form-control" name="phone" id="phone" placeholder="Phone." />
+        		<input type="text" class="form-control" name="phone" id="phone" placeholder="Phone." 
+        		<? if(!empty($new_entry[5])): ?> value="<?= $new_entry[5]; endif; ?>"/>
         	</label><br /><br />
 		    <? if(!empty($errors)) : ?>
 		    <p>Missing Fields: <mark> <? foreach($errors as $error) : ?>
