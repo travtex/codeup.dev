@@ -2,4 +2,9 @@ Take out the trash
 Buy some milk
 Train a Markov chain
 Make the bed
+<<<<<<< HEAD
+=======
+Buy some milk
+Train a Markov chain
+>>>>>>> 0f434bf5394d08ece54b727daf858b9fef49c072
 Teach the dog binary
