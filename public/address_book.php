@@ -51,7 +51,6 @@ if (file_exists($filename)) {
 	$address_array = [];
 }
 
-
 // Validate $_POST data, push new entry to array, save to .csv
 if(!empty($_POST)){
 	$new_entry = set_entry($_POST);
