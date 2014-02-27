@@ -24,23 +24,22 @@ class AddressDataStore {
         fclose($handle);
     }
 
+	function set_entry($array) {
+		$entry = [
+			htmlspecialchars(strip_tags($array['name'])),
+			htmlspecialchars(strip_tags($array['address'])),
+			htmlspecialchars(strip_tags($array['city'])),
+			htmlspecialchars(strip_tags($array['state'])),
+			htmlspecialchars(strip_tags($array['zip'])),
+			htmlspecialchars(strip_tags($array['phone']))
+			];
+		return $entry;
+	}
 }
 
 $address_book = new AddressDataStore();
 $address_book->filename = $filename;
 
-// Set an array to a new entry
-function set_entry($array) {
-	$entry = [
-		htmlspecialchars(strip_tags($array['name'])),
-		htmlspecialchars(strip_tags($array['address'])),
-		htmlspecialchars(strip_tags($array['city'])),
-		htmlspecialchars(strip_tags($array['state'])),
-		htmlspecialchars(strip_tags($array['zip'])),
-		htmlspecialchars(strip_tags($array['phone']))
-		];
-	return $entry;
-}
 
 // Loads address .csv file, or empty array if absent
 if (file_exists($filename)) {
@@ -51,7 +50,7 @@ if (file_exists($filename)) {
 
 // Validate $_POST data, push new entry to array, save to .csv
 if(!empty($_POST)) {
-	$new_entry = set_entry($_POST);
+	$new_entry = $address_book->set_entry($_POST);
 	if(empty($new_entry[0]) || empty($new_entry[1]) || empty($new_entry[2])
 		|| empty($new_entry[3]) || empty($new_entry[4])) {
 	empty($new_entry[0]) ? $errors[] = "Name" : false;
