@@ -52,7 +52,7 @@ if (file_exists($filename)) {
 }
 
 // Validate $_POST data, push new entry to array, save to .csv
-if(!empty($_POST)){
+if(!empty($_POST)) {
 	$new_entry = set_entry($_POST);
 	if(empty($new_entry[0]) || empty($new_entry[1]) || empty($new_entry[2])
 		|| empty($new_entry[3]) || empty($new_entry[4])) {
@@ -68,7 +68,7 @@ if(!empty($_POST)){
 }
 
 // Delete entries and save to .csv
-if(isset($_GET['remove'])){
+if(isset($_GET['remove'])) {
 	unset($address_array[$_GET['remove']]);
 	$address_book->write_address_book($address_array);
 	header("Location: address_book.php");
