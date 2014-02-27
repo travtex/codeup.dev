@@ -6,6 +6,11 @@ $filename = "data/address_book.csv";
 
 class AddressDataStore {
 	public $filename='';
+
+	function __construct($filename = '') {
+		$this->filename = $filename;
+	}
+	
 	function read_address_book() {
         $contents = [];
         $handle = fopen($this->filename, "r");
@@ -37,9 +42,7 @@ class AddressDataStore {
 	}
 }
 
-$address_book = new AddressDataStore();
-$address_book->filename = $filename;
-
+$address_book = new AddressDataStore($filename);
 
 // Loads address .csv file, or empty array if absent
 if (file_exists($filename)) {
