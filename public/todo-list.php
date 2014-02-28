@@ -6,14 +6,6 @@ require_once('classes/filestore.php');
 $todos = new Filestore("data/todo-list.txt");
 
 
-// saves to a text file as a string
-// function save_file($filename, $items) {
-//     $handle = fopen($filename, "w");
-//     $contents = implode("\n", $items);
-//     fwrite($handle, $contents);
-//     fclose($handle);
-// }
-
 function add_item(&$items) {
     $items[] = $_POST['add'];
 }
