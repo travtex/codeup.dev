@@ -137,6 +137,7 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
         	<button type="submit" class="btn btn-primary">Add New Address</button>
         </div>
     </form>
+    <hr />
     <form method="POST" enctype="multipart/form-data" action="" name="form2">
     	<div class="form-group">
         	<p>
@@ -148,6 +149,7 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
             </p>
              <button type="submit" class="btn btn-warning">Add From File</button>
          </div>
+     </form>
 	    </div>
 </body>
 </html>
