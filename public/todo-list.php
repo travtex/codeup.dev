@@ -80,7 +80,7 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
             <?  if($items) :
 
                 foreach($items as $key => $item) : ?>
-                    <li><?= htmlspecialchars(strip_tags($item)); ?> <small>(<a href="?remove=<?= $key; ?>">Remove Item</a>)</small></li>
+                    <li><?= htmlspecialchars(strip_tags($item)); ?><a href="?remove=<?= $key; ?>"> &#9986;</a></li>
                 <? endforeach;
                 else : ?>
                     <li>No Available Items!</li>
