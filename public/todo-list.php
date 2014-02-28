@@ -70,6 +70,23 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
         $( "#sortable" ).disableSelection();
       });
     </script>
+    <style>
+
+    .snip {
+        -webkit-transition: all .3s ease-in-out !important;
+        
+    }
+
+    .snip:hover {
+        display: inline-block;
+        text-decoration: none;
+        -webkit-transform: rotate(180deg) scale(1.4);
+        position: relative;
+        right: -5px;
+        
+    }
+
+    </style>
 </head>
 <body>
 
@@ -80,7 +97,7 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
             <?  if($items) :
 
                 foreach($items as $key => $item) : ?>
-                    <li><?= htmlspecialchars(strip_tags($item)); ?><a href="?remove=<?= $key; ?>"> &#9986;</a></li>
+                    <li><?= htmlspecialchars(strip_tags($item)); ?><a class="snip" href="?remove=<?= $key; ?>"> &#9988;</a></li>
                 <? endforeach;
                 else : ?>
                     <li>No Available Items!</li>
