@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>A Card</title>
+	<style>
+	.card {
+		height: 300px;
+		width: 200px;
+		background: -webkit-linear-gradient(top left, linen, white, linen);
+		border-width: 1px;
+		border-style: solid;
+		border-color: black;
+		border-radius: 5%;
+		box-shadow: 3px 3px 12px #222222;
+		margin: 20px;
+	}
+	.top_left {
+		margin: 10px;
+		color: firebrick;
+		font-size: 30pt;
+		font-weight: bold;
+		background: -webkit-linear-gradient(#500000, #C80000);
+  		-webkit-background-clip: text;
+  		-webkit-text-fill-color: transparent;
+	}
+
+	.bottom_right {
+		display: block;
+		margin: 10px;
+		text-align: right;
+		color: firebrick;
+		font-size: 30pt;
+		font-weight: bold;
+		-webkit-transform: rotate(180deg);
+		position: relative;
+		top: 120px;
+		right: -160px;
+		background: -webkit-linear-gradient(#500000, #C80000);
+  		-webkit-background-clip: text;
+  		-webkit-text-fill-color: transparent;
+	}
+
+	.a1 {
+		color: firebrick;
+		font-size: 35pt;
+		position: relative;
+		top: 50px;
+		background: -webkit-linear-gradient(#500000, #C80000);
+  		-webkit-background-clip: text;
+  		-webkit-text-fill-color: transparent;
+	}
+
+	.a2 {
+		color: firebrick;
+		font-size: 35pt;
+		position: relative;
+		top: 120px;
+		left: -40px;
+		background: -webkit-linear-gradient(#500000, #C80000);
+  		-webkit-background-clip: text;
+  		-webkit-text-fill-color: transparent;
+	}
+
+	.a3 {
+		color: firebrick;
+		font-size: 35pt;
+		position: relative;
+		top: 190px;
+		left: -80px;
+		background: -webkit-linear-gradient(#500000, #C80000);
+  		-webkit-background-clip: text;
+  		-webkit-text-fill-color: transparent;
+	}
+
+	.b1 {
+		color: firebrick;
+		font-size: 35pt;
+		position: relative;
+		top: 50px;
+		left: -40px;
+		background: -webkit-linear-gradient(#500000, #C80000);
+  		-webkit-background-clip: text;
+  		-webkit-text-fill-color: transparent;
+	}
+	.b2 {
+		color: firebrick;
+		font-size: 35pt;
+		position: relative;
+		top: 65px;
+		left: 120px;
+		background: -webkit-linear-gradient(#500000, #C80000);
+  		-webkit-background-clip: text;
+  		-webkit-text-fill-color: transparent;
+	}
+
+	.b3 {
+		color: firebrick;
+		font-size: 35pt;
+		position: relative;
+		top: 135px;
+		left: 80px;
+		background: -webkit-linear-gradient(#500000, #C80000);
+  		-webkit-background-clip: text;
+  		-webkit-text-fill-color: transparent;
+	}
+	</style>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script>
+    $(function() {
+    $( "#draggable" ).draggable();
+	  });
+    </script>
+</head>
+<body>
+
+	<div class="card" id="draggable">
+		<span class="top_left">6</span>
+		<span class="a1">&hearts;</span>
+		<span class="a2">&hearts;</span>
+		<span class="a3">&hearts;</span>
+		<span class="b1">&hearts;</span>
+		<span class="b2">&hearts;</span>
+		<span class="b3">&hearts;</span>
+		<span class="bottom_right">6</span>
+	</div>
+	
+</body>
+</html>
