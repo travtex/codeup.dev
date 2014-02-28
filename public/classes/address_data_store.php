@@ -1,29 +1,16 @@
 <?php
 
-class AddressDataStore {
-	public $filename='';
+require_once('filestore.php');
 
-	function __construct($filename = '') {
-		$this->filename = $filename;
-	}
+class AddressDataStore extends Filestore {
 
-	function read_address_book() {
-        $contents = [];
-        $handle = fopen($this->filename, "r");
-        while(($data = fgetcsv($handle)) !== FALSE) {
-        	$contents[] = $data;
-        }
-        fclose($handle);
-        return $contents;
-    }
-
-    function write_address_book($addresses_array) {
-        $handle = fopen($this->filename, "w");
-        foreach($addresses_array as $fields) {
-        	fputcsv($handle, $fields);
-        }
-        fclose($handle);
-    }
+    // function write_address_book($addresses_array) {
+    //     $handle = fopen($this->filename, "w");
+    //     foreach($addresses_array as $fields) {
+    //     	fputcsv($handle, $fields);
+    //     }
+    //     fclose($handle);
+    // }
 
 	function set_entry($array) {
 		$entry = [
