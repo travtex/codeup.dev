@@ -1,27 +1,18 @@
   
 <? 
 
-// loads a text file and returns as an array        
-function import_data($filename) {
-    if (filesize($filename) == 0) {
-        return FALSE;
-    }
-    else {
-        $handle = fopen($filename, "r");
-        $contents = fread($handle, filesize($filename));
-        $content_array = explode("\n", $contents);
-        fclose($handle);
-        return $content_array;
-    }
-}
+require_once('classes/filestore.php');
+
+$todos = new Filestore("data/todo-list.txt");
+
 
 // saves to a text file as a string
-function save_file($filename, $items) {
-    $handle = fopen($filename, "w");
-    $contents = implode("\n", $items);
-    fwrite($handle, $contents);
-    fclose($handle);
-}
+// function save_file($filename, $items) {
+//     $handle = fopen($filename, "w");
+//     $contents = implode("\n", $items);
+//     fwrite($handle, $contents);
+//     fclose($handle);
+// }
 
 function add_item(&$items) {
     $items[] = $_POST['add'];
@@ -41,11 +32,11 @@ function archive_item($item) {
 
 $items = [];
 $file_items = [];
-$items = import_data("data/todo-list.txt");
+$items = $todos->read_lines(TRUE);
 
 if(isset($_POST['add']) && !empty($_POST['add'])) {
     add_item($items);
-    save_file("data/todo-list.txt", $items);
+    $todos->write_lines($items);
 }
 
 $archived_items = null;
@@ -55,7 +46,7 @@ if(isset($_GET['remove'])) {
      archive_item($archived_items);
 
     unset($items[$_GET['remove']]);
-    save_file("data/todo-list.txt", $items);
+    $todos->write_lines($items);
     header("Location: todo-list.php");
     exit(0);
 }
@@ -73,10 +64,10 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
         $file_items = import_data("uploads/" . $filename);
         if(isset($_POST['overwrite']) && $_POST['overwrite'] == 'on') {
             $items = $file_items;
-            save_file("data/todo-list.txt", $items);
+            $todos->write_lines($items);
         } else {
             $items = array_merge($items, $file_items);
-            save_file("data/todo-list.txt", $items);
+            $todos->write_lines($items);
         }
     } 
 }

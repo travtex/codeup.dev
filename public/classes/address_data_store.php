@@ -4,14 +4,6 @@ require_once('filestore.php');
 
 class AddressDataStore extends Filestore {
 
-    // function write_address_book($addresses_array) {
-    //     $handle = fopen($this->filename, "w");
-    //     foreach($addresses_array as $fields) {
-    //     	fputcsv($handle, $fields);
-    //     }
-    //     fclose($handle);
-    // }
-
 	function set_entry($array) {
 		$entry = [
 			htmlspecialchars(strip_tags($array['name'])),
