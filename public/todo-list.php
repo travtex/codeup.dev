@@ -1,25 +1,13 @@
   
 <? 
 
-require_once('classes/filestore.php');
+require_once('classes/todo_data_store.php');
 
-$todos = new Filestore("data/todo-list.txt");
+$todos = new TodoDataStore("data/todo-list.txt");
 
 
 function add_item(&$items) {
     $items[] = $_POST['add'];
-}
-
-function archive_item($item) {
-    if (filesize("data/todo-archive.txt") == 0) {
-        $handle = fopen("data/todo-archive.txt", "a+");
-        fwrite($handle, $item);
-        fclose($handle);
-    } else {
-        $handle = fopen("data/todo-archive.txt", "a");
-        fwrite($handle, "\n" . $item);
-        fclose($handle);
-    }
 }
 
 $items = [];
@@ -35,7 +23,7 @@ $archived_items = null;
 
 if(isset($_GET['remove'])) {
      $archived_items = $items[$_GET['remove']];
-     archive_item($archived_items);
+     $todos->archive_item($archived_items);
 
     unset($items[$_GET['remove']]);
     $todos->write_lines($items);
