@@ -5,7 +5,7 @@ $errors = [];
 $filename = "data/address_book.csv";
 
 // Address book handler class included
-include('classes/address_data_store.php');
+require_once('classes/address_data_store.php');
 
 $address_book = new AddressDataStore($filename);
 
