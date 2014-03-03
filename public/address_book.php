@@ -3,7 +3,7 @@
 $new_entry = [];
 $errors = [];
 $filename = "data/address_book.csv";
-
+$ex_error = '';
 // Address book handler class included
 require_once('classes/address_data_store.php');
 
@@ -17,24 +17,29 @@ if (file_exists($filename)) {
 }
 
 // Validate $_POST data, push new entry to array, save to .csv
-if(!empty($_POST)) {
-	$new_entry = $address_book->set_entry($_POST);
-	if(empty($new_entry[0]) || empty($new_entry[1]) || empty($new_entry[2])
-		|| empty($new_entry[3]) || empty($new_entry[4])) {
-	empty($new_entry[0]) ? $errors[] = "Name" : false;
-	empty($new_entry[1]) ? $errors[] = "Address" : false;
-	empty($new_entry[2]) ? $errors[] = "City" : false;
-	empty($new_entry[3]) ? $errors[] = "State" : false;
-	empty($new_entry[4]) ? $errors[] = "Zip" : false;
-	} elseif ((strlen($new_entry[0]) > 125) || (strlen($new_entry[1]) > 125) || (strlen($new_entry[2]) > 125) 
-			|| (strlen($new_entry[3]) > 125) || (strlen($new_entry[4]) > 125) || (strlen($new_entry[5]) > 125)) {
-		throw new Exception("Entry must be less than 125 characters.");
-	} else {
-	$address_array[] = $new_entry;
-	$address_book->write($address_array);
-	$new_entry = [];
+try {	
+	if(!empty($_POST)) {
+		$new_entry = $address_book->set_entry($_POST);
+		if(empty($new_entry[0]) || empty($new_entry[1]) || empty($new_entry[2])
+			|| empty($new_entry[3]) || empty($new_entry[4])) {
+		empty($new_entry[0]) ? $errors[] = "Name" : false;
+		empty($new_entry[1]) ? $errors[] = "Address" : false;
+		empty($new_entry[2]) ? $errors[] = "City" : false;
+		empty($new_entry[3]) ? $errors[] = "State" : false;
+		empty($new_entry[4]) ? $errors[] = "Zip" : false;
+		} elseif ((strlen($new_entry[0]) > 125) || (strlen($new_entry[1]) > 125) || (strlen($new_entry[2]) > 125) 
+				|| (strlen($new_entry[3]) > 125) || (strlen($new_entry[4]) > 125) || (strlen($new_entry[5]) > 125)) {
+			throw new Exception("Entries must be less than 125 characters.");
+		} else {
+		$address_array[] = $new_entry;
+		$address_book->write($address_array);
+		$new_entry = [];
+		}
 	}
+} catch (Exception $e) {
+	$ex_error = $e->getMessage();
 }
+
 
 // Delete entries and save to .csv
 if(isset($_GET['remove'])) {
@@ -119,7 +124,10 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
 				<td style="text-align:center;"><strong>No Addresses Available</strong></td>
 			</tr>
 		<? endif; ?>
-	
+		
+		<? if (!empty($ex_error)) : ?>
+			<p><mark><?= $ex_error; ?></mark></p>
+		<? endif; ?>
 
 	</table>
 	<hr />
