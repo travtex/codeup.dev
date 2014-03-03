@@ -11,7 +11,7 @@ $address_book = new AddressDataStore($filename);
 
 // Loads address .csv file, or empty array if absent
 if (file_exists($filename)) {
-	$address_array = $address_book->read_csv();
+	$address_array = $address_book->read();
 } else {
 	$address_array = [];
 }
@@ -28,7 +28,7 @@ if(!empty($_POST)) {
 	empty($new_entry[4]) ? $errors[] = "Zip" : false;
 	} else {
 	$address_array[] = $new_entry;
-	$address_book->write_csv($address_array);
+	$address_book->write($address_array);
 	$new_entry = [];
 	}
 }
@@ -36,7 +36,7 @@ if(!empty($_POST)) {
 // Delete entries and save to .csv
 if(isset($_GET['remove'])) {
 	unset($address_array[$_GET['remove']]);
-	$address_book->write_csv($address_array);
+	$address_book->write($address_array);
 	header("Location: address_book.php");
 	exit(0);
 }
@@ -52,8 +52,8 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
          // Move the file from the temp location to our uploads directory
          move_uploaded_file($_FILES['file001']['tmp_name'], $saved_filename);
          $new_addresses = new AddressDataStore("uploads/" . $filename);
-	     $address_array = array_merge($address_array, $new_addresses->read_csv());
-	     $address_book->write_csv($address_array);
+	     $address_array = array_merge($address_array, $new_addresses->read());
+	     $address_book->write($address_array);
     } 
 }
 
@@ -71,6 +71,23 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="css/default.css">
+
+     <style>
+
+    .snip {
+        -webkit-transition: all .3s ease-in-out !important;
+        
+    }
+
+    .snip:hover {
+        display: inline-block;
+        text-decoration: none;
+        -webkit-transform: rotate(180deg) scale(1.4);
+        position: relative;
+        
+    }
+
+    </style>
 </head>
 <body>
 	<div id="main">
@@ -91,7 +108,7 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
 				<? foreach($address as $value): ?>
 				<td><?= $value; ?></td>
 				<? endforeach; ?>
-				<td><a href="?remove=<?= $key ?>">X</a></td>
+				<td><a class="snip" href="?remove=<?= $key ?>">&#9988;</a></td>
 			</tr>
 			<? endforeach; ?>
 		<? else: ?>

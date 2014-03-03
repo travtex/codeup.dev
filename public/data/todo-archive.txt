@@ -6,3 +6,4 @@ Get dog treats
 Get Neko food
 Teach the dog binary
 Get Neko food
+Get kali food

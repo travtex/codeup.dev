@@ -12,11 +12,11 @@ function add_item(&$items) {
 
 $items = [];
 $file_items = [];
-$items = $todos->read_lines(TRUE);
+$items = $todos->read(TRUE);
 
 if(isset($_POST['add']) && !empty($_POST['add'])) {
     add_item($items);
-    $todos->write_lines($items);
+    $todos->write($items);
 }
 
 $archived_items = null;
@@ -26,7 +26,7 @@ if(isset($_GET['remove'])) {
      $todos->archive_item($archived_items);
 
     unset($items[$_GET['remove']]);
-    $todos->write_lines($items);
+    $todos->write($items);
     header("Location: todo-list.php");
     exit(0);
 }
@@ -44,10 +44,10 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
         $file_items = import_data("uploads/" . $filename);
         if(isset($_POST['overwrite']) && $_POST['overwrite'] == 'on') {
             $items = $file_items;
-            $todos->write_lines($items);
+            $todos->write($items);
         } else {
             $items = array_merge($items, $file_items);
-            $todos->write_lines($items);
+            $todos->write($items);
         }
     } 
 }
