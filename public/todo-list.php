@@ -13,15 +13,20 @@ function add_item(&$items) {
 $items = [];
 $file_items = [];
 $items = $todos->read(TRUE);
+$ex_error = '';
 
-if(isset($_POST['add']) && !empty($_POST['add'])) {
-    if(strlen($_POST['add']) > 240) {
-        throw new Exception("TODO items cannot be longer than 240 characters.");
-    } else {
-    add_item($items);
-    $todos->write($items);
+try {
+    if(isset($_POST['add']) && !empty($_POST['add'])) {
+        if(strlen($_POST['add']) > 240) {
+            throw new Exception("TODO items cannot be longer than 240 characters.");
+        } else {
+        add_item($items);
+        $todos->write($items);
+        }
     }
-}
+ } catch (Exception $e) {
+    $ex_error = $e->getMessage();
+ }
 
 $archived_items = null;
 
@@ -108,6 +113,9 @@ if (count($_FILES) > 0 && $_FILES['file001']['error'] == 0) {
                     <? endif; ?>
         </ul>
         <p><mark>Total Items: <?= count($items); ?></mark></p>
+        <? if (!empty($ex_error)) : ?>
+            <p><mark><?= $ex_error ?></mark></p>
+        <? endif; ?>
 
     <hr />
 
