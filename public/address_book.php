@@ -26,6 +26,9 @@ if(!empty($_POST)) {
 	empty($new_entry[2]) ? $errors[] = "City" : false;
 	empty($new_entry[3]) ? $errors[] = "State" : false;
 	empty($new_entry[4]) ? $errors[] = "Zip" : false;
+	} elseif ((strlen($new_entry[0]) > 125) || (strlen($new_entry[1]) > 125) || (strlen($new_entry[2]) > 125) 
+			|| (strlen($new_entry[3]) > 125) || (strlen($new_entry[4]) > 125) || (strlen($new_entry[5]) > 125)) {
+		throw new Exception("Entry must be less than 125 characters.");
 	} else {
 	$address_array[] = $new_entry;
 	$address_book->write($address_array);

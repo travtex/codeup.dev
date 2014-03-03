@@ -15,8 +15,12 @@ $file_items = [];
 $items = $todos->read(TRUE);
 
 if(isset($_POST['add']) && !empty($_POST['add'])) {
+    if(strlen($_POST['add']) > 240) {
+        throw new Exception("TODO items cannot be longer than 240 characters.");
+    } else {
     add_item($items);
     $todos->write($items);
+    }
 }
 
 $archived_items = null;
