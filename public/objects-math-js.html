@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Math Object Exercise</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="css/default.css">
+</head>
+<body>
+	<div id="main">
+		
+
+	</div>
+	<script>
+		var circle = {
+    		radius: 3,
+    		getArea: function () {
+        		// todo: finish this method
+        		// hint: area = pi * radius^2
+        		return Math.PI * Math.pow(this.radius, 2);
+    		},
+    		logInfo: function (round) {
+	        	// todo: complete this method. if round is true, round the result to the nearest integer.
+	        	if(round) {
+		        	console.log('Area of a circle with radius: ' + this.radius + ', is: '
+		        		+ Math.round(this.getArea()));
+	        	} else {
+	        		console.log('Area of a circle with radius: ' + this.radius + ', is: '
+	        			+ this.getArea());
+	        	}
+
+    		}
+		};
+
+		// log info about the circle
+		circle.logInfo(false);
+		circle.logInfo(true);
+
+		// todo:
+		// Change the radius of the circle to 5.
+		circle.radius = 5;
+
+		// log info about the circle
+		circle.logInfo(false);
+		circle.logInfo(true);
+
+	</script>
+</body>
+</html>
