@@ -25,14 +25,18 @@
     		},
     		logInfo: function (round) {
 	        	// todo: complete this method. if round is true, round the result to the nearest integer.
-	        	if(round) {
-		        	console.log('Area of a circle with radius: ' + this.radius + ', is: '
-		        		+ Math.round(this.getArea()));
-	        	} else {
-	        		console.log('Area of a circle with radius: ' + this.radius + ', is: '
-	        			+ this.getArea());
-	        	}
 
+	        	var area = this.getArea();	
+	        	// if(round) {
+		        // 	console.log('Area of a circle with radius: ' + this.radius + ', is: '
+		        // 		+ Math.round(this.getArea()));
+	        	// } else {
+	        	// 	console.log('Area of a circle with radius: ' + this.radius + ', is: '
+	        	// 		+ this.getArea());
+	        	// }
+	        	round ? area = Math.round(area) : false;
+	        	console.log('Area of a circle with radius: ' + this.radius + ' is: ' +
+	        		area);
     		}
 		};
 
