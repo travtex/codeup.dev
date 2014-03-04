@@ -5,6 +5,7 @@ require_once('classes/todo_data_store.php');
 
 $todos = new TodoDataStore("data/todo-list.txt");
 
+class InvalidTodoException extends Exception {}
 
 function add_item(&$items) {
     $items[] = $_POST['add'];
@@ -18,13 +19,13 @@ $ex_error = '';
 try {
     if(isset($_POST['add']) && !empty($_POST['add'])) {
         if(strlen($_POST['add']) > 240) {
-            throw new Exception("TODO items cannot be longer than 240 characters.");
+            throw new InvalidArgumentException("TODO items cannot be longer than 240 characters.");
         } else {
         add_item($items);
         $todos->write($items);
         }
     }
- } catch (Exception $e) {
+ } catch (InvalidArgumentException $e) {
     $ex_error = $e->getMessage();
  }
 

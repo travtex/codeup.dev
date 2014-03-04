@@ -9,6 +9,8 @@ require_once('classes/address_data_store.php');
 
 $address_book = new AddressDataStore($filename);
 
+class InvalidEntryException extends Exception {}
+
 // Loads address .csv file, or empty array if absent
 if (file_exists($filename)) {
 	$address_array = $address_book->read();
@@ -29,14 +31,14 @@ try {
     		empty($new_entry[4]) ? $errors[] = "Zip" : false;
     		} elseif ((strlen($new_entry[0]) > 125) || (strlen($new_entry[1]) > 125) || (strlen($new_entry[2]) > 125) 
     				|| (strlen($new_entry[3]) > 125) || (strlen($new_entry[4]) > 125) || (strlen($new_entry[5]) > 125)) {
-    			throw new Exception("Entries must be less than 125 characters.");
+    			throw new InvalidEntryException("Entries must be less than 125 characters.");
     		} else {
     		$address_array[] = $new_entry;
     		$address_book->write($address_array);
     		$new_entry = [];
 		}
 	}
-} catch (Exception $e) {
+} catch (InvalidEntryException $e) {
 	$ex_error = $e->getMessage();
 }
 
