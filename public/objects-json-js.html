@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Objects JSON Intro</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="css/default.css">
+</head>
+<body>
+	<div id="main">
+		
+	</div>
+	<script>
+
+			// todo:
+		// Create an array of object that represent books.
+		// Each book should have a title and an author.
+		// The book author should be an object with a firstName and lastName.
+		// Be creative and add at least 5 books to the array
+		var books = [
+			 {
+				title: "American Gods",
+				author: {
+					firstName: "Neil",
+					lastName: "Gaiman"
+				}
+			},
+			{
+				title: "Mostly Harmless",
+				author: {
+					firstName: "Douglas",
+					lastName: "Adams"
+				}
+			},
+			{
+				title: "Fuller Memorandum, The",
+				author: {
+					firstName: "Charles",
+					lastName: "Stross"
+				}
+			},
+			{
+				title: "Dweller",
+				author: {
+					firstName: "Jeff",
+					lastName: "Strand"
+				}
+			},
+			{
+				title: "Off Season",
+				author: {
+					firstName: "Jack",
+					lastName: "Ketchum"
+				}
+			}
+		];
+
+		// log out the books array
+		console.log(books);
+
+		// todo:
+		// Loop through the array of books using .forEach and print out the specified information about each one.
+		// start loop here
+
+		books.forEach(function(element, index, array) {
+		    console.log("Book #" + (index + 1));
+		    console.log("Title: " + element.title);
+		    console.log("Author: " + element.author.firstName + " " + element.author.lastName);
+		    console.log("---");
+		});
+		// end loop here
+	</script>
+</body>
+</html>
