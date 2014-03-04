@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Intro to JS-Objects</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="css/default.css">
+</head>
+<body>
+	<div id="main">
+
+		<button type="button" style="text-align:center; margin:auto; display:block;" class="btn-lg btn-danger" onclick="person.sayHello()">Click this Bad Boy</button>
+		<script>
+		// todo:
+// Create person object with firstName and lastName properties (set to your first and last name).
+// var person = todo;
+var person = {};
+person.firstName = "Travis";
+person.lastName = "Flatt";
+
+// todo:
+// Add a say hello method to the person object that alerts hello using the firstName and lastName properties.
+person.sayHello = function() {
+	alert("Hello, " + person.firstName + " " + person.lastName);
+}
+// Say hello from the person object.
+// person.sayHello();
+		</script>
+		
+	</div>
+</body>
+</html>
