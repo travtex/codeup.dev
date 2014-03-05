@@ -43,8 +43,8 @@ function buildDeck(suits, values) {
 				} else {
 					card.isAce = false;
 				}
+				deck.push(card);
 			}
-			deck.push(card);
 		}
 	}
 
