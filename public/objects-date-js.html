@@ -28,15 +28,8 @@
 		// See link below for methods needed:
 		// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#Getter
 
-		var myMonth = '';
-		months.forEach(function(element, index) {
-			if (index === jsBirthday.getMonth()) {
-				myMonth = element;
-			}
-		});
-
-		console.log('Here is my birthday using vanilla js: ' + myMonth + ' ' +
-			jsBirthday.getDate() + ', ' + jsBirthday.getUTCFullYear());
+		console.log('Here is my birthday using vanilla js: ' + months[jsBirthday.getMonth()] + ' ' +
+			jsBirthday.getDate() + 'rd, ' + jsBirthday.getUTCFullYear());
 
 		// create the date corresponding to your birthday using Moment.js.
 		var momentBirthday = moment("4-23-1974", "MM-DD-YYYY");
