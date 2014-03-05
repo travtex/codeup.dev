@@ -24,8 +24,6 @@
 		// Create the date corresponding to your birthday using the JavaScript Date object.
 		var jsBirthday = new Date(1974, 3, 23);
 		
-
-		// todo:
 		// Log your birthday in the format: January 1, 2014 using the JavaScript Date object.
 		// See link below for methods needed:
 		// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#Getter
@@ -41,11 +39,9 @@
 			jsBirthday.getDate() + ', ' + jsBirthday.getUTCFullYear());
 
 		// create the date corresponding to your birthday using Moment.js.
-		var momentBirthday = 
-
-		// todo:
+		var momentBirthday = moment("4-23-1974", "MM-DD-YYYY");
 		// Log your birthday in the format: January 1, 2014 using Moment.js.
-		console.log('Here is my birthday using Moment.js: ');
+		console.log('Here is my birthday using Moment.js: ' + momentBirthday.format('MMMM Do, YYYY'));
 	</script>
 </body>
 </html>
