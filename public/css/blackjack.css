@@ -1,0 +1,17 @@
+.card {
+	border-radius: 5%;
+	height: 336px;
+	width: 240px;
+	box-shadow: 4px 4px 12px #111111;
+	display: inline-block;
+}
+
+#ace-of-harts {
+	background: url('../img/cards/ace-of-harts.jpg');
+	background-size: cover;
+}
+
+#king-of-wolves {
+	background: url('../img/cards/king-of-wolves.jpg');
+	background-size: cover;
+}
