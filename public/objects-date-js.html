@@ -23,13 +23,13 @@
 		// todo:
 		// Create the date corresponding to your birthday using the JavaScript Date object.
 		var jsBirthday = new Date(1974, 3, 23);
-		
+
 		// Log your birthday in the format: January 1, 2014 using the JavaScript Date object.
 		// See link below for methods needed:
 		// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#Getter
 
 		var myMonth = '';
-		months.forEach(function(element, index, array) {
+		months.forEach(function(element, index) {
 			if (index === jsBirthday.getMonth()) {
 				myMonth = element;
 			}
