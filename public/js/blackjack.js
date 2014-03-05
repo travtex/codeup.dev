@@ -4,17 +4,7 @@ var values = ['Ace', 'King', 'Queen', 'Jack', 'Ten', 'Nine', 'Eight', 'Seven', '
 
 var deck = [];
 
-// function buildDeck(suits, values) {
-// 	for(var i = 0; i < values.length; i++) {
-// 		for(var j = 0; j < suits.length; j++) {
-// 			deck.push(values[i] + " of " + suits[j]);
-
-// 		}
-// 	}
-// }
-
-//buildDeck(suits, values);
-
+// Build card object
 var Card = function (suit, card, isAce, value) {
 	suit = this.suit;
 	card = this.card;
@@ -22,16 +12,46 @@ var Card = function (suit, card, isAce, value) {
 	value = this.value;
 }
 
-Card.getValue = function () {
-	this.value
+// Get the numeric value of a given card name
+var getValue = function (card) {
+	switch (card) {
+		case "Ace":
+			return 11;
+			break;
+		case "King":
+		case "Queen":
+		case "Jack":
+		case "Ten":
+			return 10;
+			break;
+		case "Nine":
+			return 9;
+			break;
+		case "Eight":
+			return 8;
+			break;
+		case "Seven":
+			return 7;
+			break;
+		case "Six":
+			return 6;
+			break;
+		case "Five":
+			return 5;
+			break;
+		case "Four":
+			return 4;
+			break;
+		case "Three":
+			return 3;
+			break;
+		case "Two":
+			return 2;
+			break;
+	}
 }
 
-// var cardOne = new Card();
-// cardOne.suit = "Wolves";
-// cardOne.card = "King";
-// cardOne.isAce = false;
-// cardOne.value = 10;
-
+// Populate an array of card objects, setting values for fresh deck
 function buildDeck(suits, values) {
 	for(var i = 0; i < values.length; i++) {
 		for(var j = 0; j < suits.length; j++) {
@@ -43,6 +63,7 @@ function buildDeck(suits, values) {
 				} else {
 					card.isAce = false;
 				}
+				card.value = getValue(values[i]);
 				deck.push(card);
 			}
 		}

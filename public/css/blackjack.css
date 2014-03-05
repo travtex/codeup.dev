@@ -6,6 +6,10 @@
 	display: inline-block;
 }
 
+.card:hover {
+	opacity: 0.8;
+}
+
 #ace-of-harts {
 	background: url('../img/cards/ace-of-harts.jpg');
 	background-size: cover;
@@ -14,4 +18,9 @@
 #king-of-wolves {
 	background: url('../img/cards/king-of-wolves.jpg');
 	background-size: cover;
+}
+
+.turned {
+	background: url('../img/cards/card-back.jpg') !important;
+	background-size: cover !important;
 }
