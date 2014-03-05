@@ -5,11 +5,12 @@ var values = ['Ace', 'King', 'Queen', 'Jack', 'Ten', 'Nine', 'Eight', 'Seven', '
 var deck = [];
 
 // Build card object
-var Card = function (suit, card, isAce, value) {
+var Card = function (suit, card, isAce, value, id) {
 	suit = this.suit;
 	card = this.card;
 	isAce = this.isAce;
 	value = this.value;
+	id = this.id;
 }
 
 // Get the numeric value of a given card name
@@ -64,11 +65,32 @@ function buildDeck(suits, values) {
 					card.isAce = false;
 				}
 				card.value = getValue(values[i]);
+				card.id = String(i) + String(j);
 				deck.push(card);
-			}
 		}
 	}
+}
 
+// Fisher-Yates algorithm for randomizing an Array
 
+Array.prototype.shuffle = function() {
+  var i = this.length;
+  var j; 
+  var temp;
+  if ( i == 0 ) return this;
+  while ( --i ) {
+     j = Math.floor( Math.random() * ( i + 1 ) );
+     temp = this[i];
+     this[i] = this[j];
+     this[j] = temp;
+  }
+  return this;
+}
+
+// build and shuffle deck
 buildDeck(suits,values);
+deck.shuffle();
+
+// Testing
 console.log(deck);
+
