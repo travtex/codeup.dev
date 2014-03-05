@@ -87,9 +87,20 @@ Array.prototype.shuffle = function() {
   return this;
 }
 
+var dealCard = function(deck) {
+	return deck.pop();
+}
 // build and shuffle deck
 buildDeck(suits,values);
 deck.shuffle();
+
+playerCardOne = dealCard(deck);
+playerCardTwo = dealCard(deck);
+console.log(playerCardOne);
+console.log(playerCardTwo);
+
+playerTotal = playerCardOne.value + playerCardTwo.value;
+console.log(playerTotal);
 
 // Testing
 console.log(deck);
