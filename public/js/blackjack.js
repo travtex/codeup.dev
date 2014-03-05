@@ -3,6 +3,11 @@ var values = ['Ace', 'King', 'Queen', 'Jack', 'Ten', 'Nine', 'Eight', 'Seven', '
 				'Five', 'Four', 'Three', 'Two'];
 
 var deck = [];
+var playerHand = [];
+var dealerHand = [];
+var playerScore = 0;
+var dealerScore = 0;
+
 
 // Build card object
 var Card = function (suit, card, isAce, value, id) {
@@ -94,13 +99,43 @@ var dealCard = function(deck) {
 buildDeck(suits,values);
 deck.shuffle();
 
-playerCardOne = dealCard(deck);
-playerCardTwo = dealCard(deck);
-console.log(playerCardOne);
-console.log(playerCardTwo);
+// var scoreHand = function(hand) {
+// 	hand.forEach(function(element, index, array) {
+// 		score += hand[index.value];
+// 	});
+// 	return score;
+// }
 
-playerTotal = playerCardOne.value + playerCardTwo.value;
-console.log(playerTotal);
+playerHand.push(dealCard(deck));
+playerHand.push(dealCard(deck));
+
+console.log(playerHand);
+
+var scoreHand = function(hand) {
+	var score = 0;
+	var aces = 0;
+	for(i = 0; i < hand.length; i++) {
+		for(var key in hand[i]) {
+			if(key == "value") {
+				score += hand[i]["value"];
+			}
+		}
+		if(hand[i].isAce) {
+			aces++
+		}
+	}
+
+	// while(score > 21)
+
+	return aces;
+}
+
+console.log(scoreHand(playerHand));
+
+//console.log(playerCardTwo);
+// console.log(scoreHand(playerHand));
+// playerTotal = playerCardOne.value + playerCardTwo.value;
+// console.log(playerTotal);
 
 // Testing
 console.log(deck);
