@@ -21,7 +21,7 @@ html {
 
     #main {
         background: -webkit-radial-gradient(left top, lightsteelblue, white);
-        margin: 20px auto;
+        margin: 10px auto;
         width: 85%;
         border-style:groove;
         border-width: 3px;
@@ -29,7 +29,8 @@ html {
     }
 
     #main h2{
-        color: darkgreen;
+        color: ##19475E;
+        text-shadow: 2px 2px 4px #779;
     }
 
     ul {

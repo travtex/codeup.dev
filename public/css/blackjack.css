@@ -1,8 +1,24 @@
+
+
+.title {
+	color: lightsteelblue;
+	text-align: center;
+	background: -webkit-linear-gradient(#fff, lightsteelblue);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+  	text-align: center;
+}
+
+.btn-toolbar {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
 .card {
 	border-radius: 5%;
-	height: 252px;
-	width: 180px;
-	box-shadow: 4px 4px 12px #111111;
+	height: 189px;
+	width: 135px;
+	box-shadow: 4px 4px 12px #111;
 	display: inline-block;
 }
 
@@ -17,6 +33,11 @@
 
 #king-of-wolves {
 	background: url('../img/cards/king-of-wolves.jpg');
+	background-size: cover;
+}
+
+#ten-of-kraken {
+	background: url('../img/cards/ten-of-kraken.jpg');
 	background-size: cover;
 }
 
