@@ -15,6 +15,7 @@
 			background: -webkit-linear-gradient(left, #ff0000 1%, #ff0088 8%, #ff00ff 16%, #8800ff 24%, #0000ff 32%, #0088ff 40%, #00ffff 48%, #00ff88 56%, #00ff00 64%, #88ff00 72%, #ffff00 80%, #ff8800 88%, #ff0000 99%);
   			-webkit-background-clip: text;
   			-webkit-text-fill-color: transparent;
+  			padding: 5px;
 		}
 
 		.box {
@@ -41,7 +42,6 @@
 
 		.box:hover {
 			padding: 10px 150px 10px 10px;
-			-webkit-transform: rotate(360deg);
 		}
 
 		.red {
@@ -53,6 +53,7 @@
 			left: 30px;
 			position: relative;
 			background: -webkit-linear-gradient(left top, #FFA500, #AA7200);
+			-webkit-animation-delay: 0.1s;
 
 		}
 		
@@ -60,24 +61,41 @@
 			left: 60px;
 			position: relative;
 			background: -webkit-linear-gradient(left top, #FFFF00, #AAAA00);
+			-webkit-animation-delay: 0.2s;
 		}
 
 		.green {
 			left: 90px;
 			position: relative;
 			background: -webkit-linear-gradient(left top, #00FF00, #00AA00);
+			-webkit-animation-delay: 0.3s;
 		}
 
 		.blue {
 			left: 120px;
 			position: relative;
 			background: -webkit-linear-gradient(left top, #0000FF, #0000AA);
+			-webkit-animation-delay: 0.4s;
 		}
 
 		.purple {
 			left: 150px;
 			position: relative;
 			background: -webkit-linear-gradient(left top, #C000C0, #700070);
+			-webkit-animation-delay: 0.5s;
+		}
+
+		a {
+			
+		}
+
+		.title:hover {
+			background: -webkit-linear-gradient(left, #ff0000 1%, #ff8800 8%, #ffFF00 16%, #88ff00 24%, #00ff00 32%, #00ff88 40%, #00ffff 48%, #0088ff 56%, #0000ff 64%, #8800FF 72%, #ff00FF 80%, #ff0088 88%, #ff0000 99%);
+			-webkit-background-clip: text;
+  			-webkit-text-fill-color: transparent;
+  			border: solid 1px black;
+  			border-radius: 10px;
+  			padding: 5px;
 		}
 
 	</style>
