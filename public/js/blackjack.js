@@ -106,11 +106,24 @@ deck.shuffle();
 // 	return score;
 // }
 
-playerHand.push(dealCard(deck));
-playerHand.push(dealCard(deck));
+// playerHand.push(dealCard(deck));
+// playerHand.push(dealCard(deck));
+// playerHand.push(dealCard(deck));
+// playerHand.push(dealCard(deck));
+
+var addCard = function(hand) {
+	return hand.push(dealCard(deck));
+}
+
+addCard(playerHand);
+addCard(playerHand);
+addCard(playerHand);
+addCard(playerHand);
+
 
 console.log(playerHand);
 
+// Return blackjack score of an array of cards, adjust for aces if over 21.
 var scoreHand = function(hand) {
 	var score = 0;
 	var aces = 0;
@@ -124,18 +137,17 @@ var scoreHand = function(hand) {
 			aces++
 		}
 	}
-
-	// while(score > 21)
-
-	return aces;
+	if(score > 21){
+		while(aces !== 0) {
+			score -= 10;
+			aces--;
+		}
+	}
+	return score;
 }
 
-console.log(scoreHand(playerHand));
 
-//console.log(playerCardTwo);
-// console.log(scoreHand(playerHand));
-// playerTotal = playerCardOne.value + playerCardTwo.value;
-// console.log(playerTotal);
+console.log(scoreHand(playerHand));
 
 // Testing
 console.log(deck);
