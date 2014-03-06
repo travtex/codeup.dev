@@ -111,6 +111,7 @@ playerHand.push(dealCard(deck));
 
 console.log(playerHand);
 
+// Read the hand array, check for aces, and return total score
 var scoreHand = function(hand) {
 	var score = 0;
 	var aces = 0;
