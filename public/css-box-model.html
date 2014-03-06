@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Box Model Exercise</title>
+	<style>
+
+		#main {
+			margin: 75px;
+		}
+
+		.title {
+			color: #800080;
+		}
+
+		.box {
+			border: 1px solid #000000;
+			color: white;
+			font-weight: bold;
+			margin-bottom: 10px;
+			height: 72px;
+			width: 172px;
+			padding: 10px;
+			transition: all 0.3s ease-in-out;
+		}
+
+		.box:hover {
+			-webkit-transform: scale(1.4, 1);
+		}
+
+		.red {
+			position: relative;
+			background: -webkit-linear-gradient(left top, #FF0000, #AA0000);
+		}
+
+		.orange {
+			left: 30px;
+			position: relative;
+			background: -webkit-linear-gradient(left top, #FFA500, #AA7200);
+
+		}
+		
+		.yellow {
+			left: 60px;
+			position: relative;
+			background: -webkit-linear-gradient(left top, #FFFF00, #AAAA00);
+		}
+
+		.green {
+			left: 90px;
+			position: relative;
+			background: -webkit-linear-gradient(left top, #00FF00, #00AA00);
+		}
+
+		.blue {
+			left: 120px;
+			position: relative;
+			background: -webkit-linear-gradient(left top, #0000FF, #0000AA);
+		}
+
+		.purple {
+			left: 150px;
+			position: relative;
+			background: -webkit-linear-gradient(left top, #800080, #300030);
+		}
+
+	</style>
+</head>
+<body>
+	<div id="main">
+		<h2><a href="http://en.wikipedia.org/wiki/Visible_spectrum" class="title">Visible Spectrum Wavelengths</a></h2>
+		<div class="box red">620-750nm</div>
+		<div class="box orange">590-620nm</div>
+		<div class="box yellow">570-590nm</div>
+		<div class="box green">495-570nm</div>
+		<div class="box blue">450-495nm</div>
+		<div class="box purple">380-450nm</div>
+	</div>
+	
+</body>
+</html>

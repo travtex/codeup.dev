@@ -123,11 +123,11 @@ addCard(playerHand);
 
 console.log(playerHand);
 
-<<<<<<< HEAD
+
 // Read the hand array, check for aces, and return total score
-=======
+
 // Return blackjack score of an array of cards, adjust for aces if over 21.
->>>>>>> 6a681d1f3e33f679c9fe4c23b5e3a10a5848e246
+
 var scoreHand = function(hand) {
 	var score = 0;
 	var aces = 0;
@@ -142,7 +142,7 @@ var scoreHand = function(hand) {
 		}
 	}
 	if(score > 21){
-		while(aces !== 0) {
+		while(aces !== 0 && score > 21) {
 			score -= 10;
 			aces--;
 		}
