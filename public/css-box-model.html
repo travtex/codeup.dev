@@ -13,14 +13,15 @@
 			font-size: 48px;
 			color: #800080;
 			background: -webkit-linear-gradient(left, #ff0000 1%, #ff0088 8%, #ff00ff 16%, #8800ff 24%, #0000ff 32%, #0088ff 40%, #00ffff 48%, #00ff88 56%, #00ff00 64%, #88ff00 72%, #ffff00 80%, #ff8800 88%, #ff0000 99%);
-;
   			-webkit-background-clip: text;
   			-webkit-text-fill-color: transparent;
 		}
 
 		.box {
 			border: 1px solid #000000;
+			border-radius: 50%;
 			color: white;
+			text-align:center;
 			font-weight: bold;
 			text-shadow: 1px 1px 3px #333333;
 			margin-bottom: 10px;
@@ -29,10 +30,18 @@
 			width: 172px;
 			padding: 10px;
 			transition: all 0.5s ease-in-out;
+			-webkit-animation: myanimate 1s infinite;
+		}
+
+		@-webkit-keyframes myanimate {
+			0% {-webkit-transform: scale(1);}
+			50% {-webkit-transform: scale(1.1);}
+			100% {-webkit-transform: scale(1);}
 		}
 
 		.box:hover {
 			padding: 10px 150px 10px 10px;
+			-webkit-transform: rotate(360deg);
 		}
 
 		.red {
