@@ -11,13 +11,15 @@ var dealerScore = 0;
 
 // Build card object
 var Card = function (suit, card, isAce, value, id) {
-	suit = this.suit;
-	card = this.card;
-	isAce = this.isAce;
-	value = this.value;
-	id = this.id;
+	this.suit = suit;
+	this.card = card;;
+	this.isAce = isAce;
+	this.value = value;
+	this.id = id;
+
 }
 
+// card1.style['background-image'] = "url('../img/cards/king-of-wolves.jpg')";
 // Get the numeric value of a given card name
 var getValue = function (card) {
 	switch (card) {
@@ -97,31 +99,19 @@ var dealCard = function(deck) {
 }
 // build and shuffle deck
 buildDeck(suits,values);
-deck.shuffle();
-
-// var scoreHand = function(hand) {
-// 	hand.forEach(function(element, index, array) {
-// 		score += hand[index.value];
-// 	});
-// 	return score;
-// }
-
-// playerHand.push(dealCard(deck));
-// playerHand.push(dealCard(deck));
-// playerHand.push(dealCard(deck));
-// playerHand.push(dealCard(deck));
+// deck.shuffle();
 
 var addCard = function(hand) {
 	return hand.push(dealCard(deck));
 }
 
-addCard(playerHand);
-addCard(playerHand);
-addCard(playerHand);
-addCard(playerHand);
+// addCard(playerHand);
+// addCard(playerHand);
+// addCard(playerHand);
+// addCard(playerHand);
 
 
-console.log(playerHand);
+// console.log(playerHand);
 
 
 // Read the hand array, check for aces, and return total score
@@ -151,7 +141,7 @@ var scoreHand = function(hand) {
 }
 
 
-console.log(scoreHand(playerHand));
+// console.log(scoreHand(playerHand));
 
 // Testing
 console.log(deck);

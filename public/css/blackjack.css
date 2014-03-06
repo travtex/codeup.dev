@@ -26,8 +26,23 @@
 	opacity: 0.8;
 }
 
-#ace-of-harts {
+#_00 {
 	background: url('../img/cards/ace-of-harts.jpg');
+	background-size: cover;
+}
+
+#_01 {
+	background: url('../img/cards/ace-of-wolves.jpg');
+	background-size: cover;
+}
+
+#_02 {
+	background: url('../img/cards/ace-of-kraken.jpg');
+	background-size: cover;
+}
+
+#_03 {
+	background: url('../img/cards/ace-of-lions');
 	background-size: cover;
 }
 
