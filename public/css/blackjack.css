@@ -36,6 +36,11 @@
 	background-size: cover;
 }
 
+#ten-of-kraken {
+	background: url('../img/cards/ten-of-kraken.jpg');
+	background-size: cover;
+}
+
 .turned {
 	background: url('../img/cards/card-back.jpg') !important;
 	background-size: cover !important;
