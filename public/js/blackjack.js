@@ -103,7 +103,7 @@ var dealCard = function(deck) {
 }
 // build and shuffle deck
 buildDeck(suits,values);
-// deck.shuffle();
+deck.shuffle();
 
 var addCard = function(hand) {
 	return hand.push(dealCard(deck));
