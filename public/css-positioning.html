@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Positioning Exercise</title>
+	<style>
+
+		#main {
+			margin: 75px;
+		}
+
+		.title {
+			font-size: 48px;
+			color: #800080;
+			background: -webkit-linear-gradient(left, #ff0000 1%, #ff0088 8%, #ff00ff 16%, #8800ff 24%, #0000ff 32%, #0088ff 40%, #00ffff 48%, #00ff88 56%, #00ff00 64%, #88ff00 72%, #ffff00 80%, #ff8800 88%, #ff0000 99%);
+  			-webkit-background-clip: text;
+  			-webkit-text-fill-color: transparent;
+  			padding: 5px;
+		}
+
+		.box {
+			border: 1px solid #000000;
+			border-radius: 10px;
+			color: white;
+			text-align:center;
+			font-weight: bold;
+			text-shadow: 1px 1px 3px #333333;
+			box-shadow: 2px 2px 6px #333333;
+			height: 72px;
+			width: 72px;
+			padding: 10px;
+			margin: 50px;
+			transition: all 0.5s ease-in-out;
+			-webkit-animation: myanimate 1s infinite;
+		}
+
+		@-webkit-keyframes myanimate {
+			0% {-webkit-transform: scale(1);}
+			50% {-webkit-transform: scale(1.1);}
+			100% {-webkit-transform: scale(1);}
+		}
+
+		.box:hover {
+			opacity: 0.7;
+			border: 4px solid black;
+		}
+
+		.red {
+			float: left;
+			display: inline-block;
+			background: -webkit-radial-gradient(left top, #FF0000, #880000);
+		}
+
+		.orange {
+			display: inline-block;
+			background: -webkit-radial-gradient(left top, #FFA500, #886000);
+			-webkit-animation-delay: 0.1s;
+
+		}
+		
+		.yellow {
+			float: left;
+			display: inline-block;
+			background: -webkit-radial-gradient(left top, #FFFF00, #888800);
+			-webkit-animation-delay: 0.2s;
+
+		}
+
+		.green {
+			display: inline-block;
+			float: left;
+			background: -webkit-radial-gradient(left top, #00FF00, #008800);
+			-webkit-animation-delay: 0.3s;
+		}
+
+		.blue {
+			display: inline-block;
+			float: left;
+			background: -webkit-radial-gradient(left top, #0000FF, #000088);
+			-webkit-animation-delay: 0.4s;
+		}
+
+		.purple {
+			display: inline-block;
+			float: left;
+			background: -webkit-radial-gradient(left top, #C000C0, #400040);
+			-webkit-animation-delay: 0.5s;
+		}
+
+		.container {
+			clear: both;
+			width: 80%;
+		}
+
+		.box:after {
+			content: url("img/codeup-arrow.png");
+			position: relative;
+			left: 90px;
+			bottom: 50px;
+		}
+
+		.title:hover {
+			background: -webkit-linear-gradient(left, #ff0000 1%, #ff8800 8%, #ffFF00 16%, #88ff00 24%, #00ff00 32%, #00ff88 40%, #00ffff 48%, #0088ff 56%, #0000ff 64%, #8800FF 72%, #ff00FF 80%, #ff0088 88%, #ff0000 99%);
+			-webkit-background-clip: text;
+  			-webkit-text-fill-color: transparent;
+  			border: solid 1px black;
+  			border-radius: 10px;
+  			padding: 5px;
+		}
+
+		#ribbon {
+			display: inline;
+			float: right;
+			position: absolute;
+			clear: both;
+			margin:0;
+			top: 0px;
+			right: 0px;
+		}
+
+	</style>
+</head>
+<body>
+		<img src="img/codeup-ribbon.png" id="ribbon" />
+	<div id="main">
+
+		<h2><a href="http://en.wikipedia.org/wiki/Visible_spectrum" class="title">Visible Spectrum Wavelengths</a></h2>
+		<div class="container">
+			<div class="box red">620-750nm</div>
+			<div class="box orange">590-620nm</div>
+			<div class="box yellow">570-590nm</div>
+		</div>
+		<div class="container">
+			<div class="box green">495-570nm</div>
+			<div class="box blue">450-495nm</div>
+			<div class="box purple">380-450nm</div>
+		</div>
+	</div>
+	
+</body>
+</html>
