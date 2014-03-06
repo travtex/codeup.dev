@@ -10,14 +10,17 @@ var dealerScore = 0;
 
 
 // Build card object
-var Card = function (suit, card, isAce, value, id) {
+var Card = function (suit, card, isAce, value, image) {
 	this.suit = suit;
-	this.card = card;;
+	this.card = card;
 	this.isAce = isAce;
 	this.value = value;
-	this.id = id;
+	this.image = image;
 
 }
+	function getUrl(){
+		return this.card.toLowerCase() + '-of-' + this.card.toLowerCase() + '.jpg';
+	}
 
 // card1.style['background-image'] = "url('../img/cards/king-of-wolves.jpg')";
 // Get the numeric value of a given card name
@@ -72,7 +75,8 @@ function buildDeck(suits, values) {
 					card.isAce = false;
 				}
 				card.value = getValue(values[i]);
-				card.id = String(i) + String(j);
+				card.image = '../img/cards/' + values[i].toLowerCase() + '-of-' + suits[j].toLowerCase() + '.jpg';
+				
 				deck.push(card);
 		}
 	}
