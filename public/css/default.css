@@ -30,7 +30,7 @@ html {
         border-radius: 20px;
     }
 
-    #main h2{
+    #main h2, h3{
         color: ##19475E;
         text-shadow: 2px 2px 4px #779;
     }

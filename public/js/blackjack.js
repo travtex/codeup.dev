@@ -143,7 +143,28 @@ var scoreHand = function(hand) {
 
 // Initialize player and dealer hand/display
 
+
+// Show player and dealer totals
+
+var showScore = function(player) {
+	if(player) {
+		score = scoreHand(playerHand);
+		$(".player-box h3>span").text(score);
+	} else {
+		score = scoreHand(dealerHand);
+		$(".dealer-box h3>span").text(score);
+		
+	}
+}
+// var showDealerScore = function() {
+// }
+
 // Hit me button adds card to player hand and gets total
+
+var hitMe = function() {
+	addCard(playerHand);
+	showScore(true);
+}
 
 // Dealer plays hand, must hit under 17 and stay over 17
 

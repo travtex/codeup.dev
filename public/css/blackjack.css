@@ -27,6 +27,10 @@
 	opacity: 0.8;
 }
 
+.box-header {
+	text-align: center;
+}
+
 #ace-of-harts {
 	background: url('../img/cards/ace-of-harts.jpg');
 	background-size: cover;
