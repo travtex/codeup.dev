@@ -18,9 +18,9 @@ var Card = function (suit, card, isAce, value, image) {
 	this.image = image;
 
 }
-	function getUrl(){
-		return this.card.toLowerCase() + '-of-' + this.card.toLowerCase() + '.jpg';
-	}
+	// function getUrl(){
+	// 	return this.card.toLowerCase() + '-of-' + this.card.toLowerCase() + '.jpg';
+	// }
 
 // card1.style['background-image'] = "url('../img/cards/king-of-wolves.jpg')";
 // Get the numeric value of a given card name
@@ -75,7 +75,7 @@ function buildDeck(suits, values) {
 					card.isAce = false;
 				}
 				card.value = getValue(values[i]);
-				card.image = '../img/cards/' + values[i].toLowerCase() + '-of-' + suits[j].toLowerCase() + '.jpg';
+				card.image = '..\/img\/cards\/' + values[i].toLowerCase() + '-of-' + suits[j].toLowerCase() + '.jpg';
 				
 				deck.push(card);
 		}
@@ -143,6 +143,7 @@ var scoreHand = function(hand) {
 
 // Initialize player and dealer hand/display
 
+// $(".player-box .card").last().after("<div class=\"card\"></div>");
 
 // Show player and dealer totals
 
@@ -156,8 +157,8 @@ var showScore = function(player) {
 		
 	}
 }
-// var showDealerScore = function() {
-// }
+
+//$(".player-box .card").last().after("<div class=\"card\" style=\"background:url('" + card1.image + "'); background-size:cover;\"><\/div>");
 
 // Hit me button adds card to player hand and gets total
 

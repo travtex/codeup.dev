@@ -1,0 +1,35 @@
+
+body {
+	padding-top: 75px;
+	padding-bottom: 50px;
+}
+
+.welcome {
+	padding-bottom: 0px;
+}
+.profile-pic {
+	opacity: 0.5;
+	-webkit-filter: blur(2px) grayscale(50%);
+	border-radius: 20px;
+	-webkit-transition: all 0.5s ease-in-out;
+	
+}
+
+.profile-pic:hover {
+	opacity: 1;
+	-webkit-filter: grayscale(0%);
+	box-shadow: 3px 3px 12px #333;
+}
+
+#email {
+	position: relative;
+	margin: 0 auto !important;
+	display: inline-block !important;
+	left: 80px;
+	bottom: 70px;
+	visibility: hidden;
+}
+
+.go-right {
+	float: right;
+}

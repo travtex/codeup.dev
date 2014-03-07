@@ -21,12 +21,17 @@
 	box-shadow: 4px 4px 12px #111;
 	display: inline-block;
 	margin: 20px 5px;
+	background-size: cover;
 }
 
 .card:hover {
 	opacity: 0.8;
 }
 
+.holder {
+	width: 0;
+	height: 0;
+}
 .box-header {
 	text-align: center;
 }
