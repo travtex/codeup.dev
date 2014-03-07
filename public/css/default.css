@@ -6,17 +6,18 @@ html {
         background-repeat: no-repeat;
         background-size: cover;
         background-attachment: fixed;
-        margin: 20px;
+        
     }
     hr {
         height: 2px;
         border-color: teal !important;
         border-width: 2px !important;
     }
-    div {
-        padding: 20px;
-        border-radius: 20px;
 
+    .codeup {
+        border-radius: 20px !important;
+        padding: 40px;
+        margin: 20px;
     }
 
     #main {
@@ -26,6 +27,7 @@ html {
         border-style:groove;
         border-width: 3px;
         border-color: teal;
+        border-radius: 20px;
     }
 
     #main h2{
