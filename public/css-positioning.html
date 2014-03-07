@@ -25,37 +25,42 @@
 			text-align:center;
 			font-weight: bold;
 			text-shadow: 1px 1px 3px #333333;
-			box-shadow: 2px 2px 6px #333333;
-			height: 72px;
-			width: 72px;
+			/*box-shadow: 2px 2px 6px #333333;*/
+			height: 100px;
+			width: 100px;
 			padding: 10px;
 			margin: 50px;
 			transition: all 0.5s ease-in-out;
-			-webkit-animation: myanimate 1s infinite;
+			box-sizing: border-box;
+			/*-webkit-animation: myanimate 1s infinite;*/
 		}
 
-		@-webkit-keyframes myanimate {
+		/*@-webkit-keyframes myanimate {
 			0% {-webkit-transform: scale(1);}
 			50% {-webkit-transform: scale(1.1);}
 			100% {-webkit-transform: scale(1);}
-		}
+		}*/
 
 		.box:hover {
 			opacity: 0.7;
-			border: 4px solid black;
+			border: 8px solid black;
+			-webkit-transform: rotate(360deg);
+			border-radius: 50%;
 		}
 
 		.red {
 			float: left;
 			display: inline-block;
 			background: -webkit-radial-gradient(left top, #FF0000, #880000);
+			box-shadow: 0px 0px 30px #880000;
 		}
 
 		.orange {
+			float: left;
 			display: inline-block;
 			background: -webkit-radial-gradient(left top, #FFA500, #886000);
 			-webkit-animation-delay: 0.1s;
-
+			box-shadow: 0px 0px 30px #886000;
 		}
 		
 		.yellow {
@@ -63,7 +68,7 @@
 			display: inline-block;
 			background: -webkit-radial-gradient(left top, #FFFF00, #888800);
 			-webkit-animation-delay: 0.2s;
-
+			box-shadow: 0px 0px 30px #999900;
 		}
 
 		.green {
@@ -71,6 +76,7 @@
 			float: left;
 			background: -webkit-radial-gradient(left top, #00FF00, #008800);
 			-webkit-animation-delay: 0.3s;
+			box-shadow: 0px 0px 30px #00AA00;
 		}
 
 		.blue {
@@ -78,6 +84,7 @@
 			float: left;
 			background: -webkit-radial-gradient(left top, #0000FF, #000088);
 			-webkit-animation-delay: 0.4s;
+			box-shadow: 0px 0px 30px #000088;
 		}
 
 		.purple {
@@ -85,6 +92,7 @@
 			float: left;
 			background: -webkit-radial-gradient(left top, #C000C0, #400040);
 			-webkit-animation-delay: 0.5s;
+			box-shadow: 0px 0px 30px #800080;
 		}
 
 		.container {

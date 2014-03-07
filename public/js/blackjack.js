@@ -101,9 +101,6 @@ Array.prototype.shuffle = function() {
 var dealCard = function(deck) {
 	return deck.pop();
 }
-// build and shuffle deck
-buildDeck(suits,values);
-deck.shuffle();
 
 var addCard = function(hand) {
 	return hand.push(dealCard(deck));
@@ -144,9 +141,17 @@ var scoreHand = function(hand) {
 	return score;
 }
 
+// Initialize player and dealer hand/display
+
+// Hit me button adds card to player hand and gets total
+
+// Dealer plays hand, must hit under 17 and stay over 17
 
 // console.log(scoreHand(playerHand));
 
+// build and shuffle deck
+buildDeck(suits,values);
+deck.shuffle();
 // Testing
 console.log(deck);
 
