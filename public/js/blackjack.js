@@ -146,7 +146,7 @@ var playerLose = function() {
 	$("#hit-me").prop("disabled",true).css("opacity", "0.6");
 	$("#stand").prop("disabled",true).css("opacity", "0.6");
 	$(".dealer-box .turned").removeClass("turned");
-	$(".dealer-box h2>span").text("WINS!");
+	$(".dealer-box h2>span").text("WINS!").effect("highlight", {}, 2500);
 	$(".player-box h2>span").text("LOSES!");
 }
 
@@ -156,7 +156,7 @@ var playerWin = function() {
 	$("#hit-me").prop("disabled",true).css("opacity", "0.6");
 	$("#stand").prop("disabled",true).css("opacity", "0.6");
 	$(".dealer-box .turned").removeClass("turned");
-	$(".player-box h2>span").text("WINS!");
+	$(".player-box h2>span").text("WINS!").effect("highlight", {}, 2500);
 	$(".dealer-box h2>span").text("LOSES!");
 }
 
@@ -166,8 +166,8 @@ var playerPush = function() {
 	$("#hit-me").prop("disabled",true).css("opacity", "0.6");
 	$("#stand").prop("disabled",true).css("opacity", "0.6");
 	$(".dealer-box .turned").removeClass("turned");
-	$(".dealer-box h2>span").text("PUSH!");
-	$(".player-box h2>span").text("PUSH!");
+	$(".dealer-box h2>span").text("PUSH!").effect("highlight", {}, 2500);
+	$(".player-box h2>span").text("PUSH!").effect("highligth", {}, 2500);
 
 }
 
@@ -185,10 +185,9 @@ var displayCard = function(dealer, card) {
 
 var hitMe = function() {
 	addCard(playerHand);
-	setTimeout(function(){
 	displayCard(false, playerHand[playerHand.length-1]);
 	showScore(true);
-	}, 300);
+	
 	if(scoreHand(playerHand) > 21) {
 		$(".player-box h3>span").text("Player BUST with " + scoreHand(playerHand));
 		playerLose();
