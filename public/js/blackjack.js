@@ -18,11 +18,7 @@ var Card = function (suit, card, isAce, value, image) {
 	this.image = image;
 
 }
-	// function getUrl(){
-	// 	return this.card.toLowerCase() + '-of-' + this.card.toLowerCase() + '.jpg';
-	// }
-
-// card1.style['background-image'] = "url('../img/cards/king-of-wolves.jpg')";
+	
 // Get the numeric value of a given card name
 var getValue = function (card) {
 	switch (card) {
@@ -158,6 +154,35 @@ var showScore = function(player) {
 	}
 }
 
+// Display results of player loss
+var playerLose = function() {
+	$("#hit-me").prop("disabled",true).css("opacity", "0.6");
+	$("#stand").prop("disabled",true).css("opacity", "0.6");
+	$(".dealer-box .turned").removeClass("turned");
+	$(".dealer-box h2>span").text("WINS!");
+	$(".player-box h2>span").text("LOSES!");
+}
+
+// Display results of player win
+
+var playerWin = function() {
+	$("#hit-me").prop("disabled",true).css("opacity", "0.6");
+	$("#stand").prop("disabled",true).css("opacity", "0.6");
+	$(".dealer-box .turned").removeClass("turned");
+	$(".player-box h2>span").text("WINS!");
+	$(".dealer-box h2>span").text("LOSES!");
+}
+
+// Display results of a push
+
+var playerPush = function() {
+	$("#hit-me").prop("disabled",true).css("opacity", "0.6");
+	$("#stand").prop("disabled",true).css("opacity", "0.6");
+	$(".dealer-box .turned").removeClass("turned");
+	$(".dealer-box h2>span").text("PUSH!");
+	$(".player-box h2>span").text("PUSH!");
+
+}
 //$(".player-box .card").last().after("<div class=\"card\" style=\"background:url('" + card1.image + "'); background-size:cover;\"><\/div>");
 
 // Hit me button adds card to player hand and gets total
@@ -167,26 +192,55 @@ var hitMe = function() {
 	showScore(true);
 	if(scoreHand(playerHand) > 21) {
 		$(".player-box h3>span").text("BUST!");
-		$("#hit-me").prop("disabled",true).css("opacity", "0.6");
-		$("#stand").prop("disabled",true).css("opacity", "0.6");
-		$(".dealer-box .turned").removeClass("turned");
-		showScore();	
+		playerLose();
+		showScore();
 	}
-
 }
 
 // Dealer plays hand, must hit under 17 and stay over 17
 
 var dealerTurn = function() {
+	dscore = scoreHand(dealerHand);
+	pscore = scoreHand(playerHand);
+	
 	$(".dealer-box .turned").removeClass("turned");
 	showScore();
+	while(dscore < 17) {
+		addCard(dealerHand);
+		dscore = scoreHand(dealerHand);
+		showScore();
+	}
+	if (dscore > 21) {
+		$(".dealer-box h3>span").text("BUST!");
+		playerWin();
+	} else if (dscore === pscore) {
+		playerPush();
+	} else if (dscore > pscore) {
+		playerLose();
+	} else {
+		playerWin();
+	}
 }
 
-// console.log(scoreHand(playerHand));
+// Start a new game
+var newGame = function(){
+
+	deck = [];
+	playerHand = [];
+	dealerHand = [];
+
+	$("#hit-me").prop("disabled",false).css("opacity", "1");
+	$("#stand").prop("disabled",false).css("opacity", "1");
+	$(".dealer-box h3>span").text("");
+	$(".player-box h3>span").text("");
+	$(".dealer-box h2>span").text("Hand");
+	$(".player-box h2>span").text("Hand");
+	
+	buildDeck(suits,values);
+	deck.shuffle();
+}
 
 // build and shuffle deck
-buildDeck(suits,values);
-deck.shuffle();
 // Testing
 console.log(deck);
 
