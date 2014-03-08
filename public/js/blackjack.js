@@ -185,13 +185,26 @@ var playerPush = function() {
 }
 //$(".player-box .card").last().after("<div class=\"card\" style=\"background:url('" + card1.image + "'); background-size:cover;\"><\/div>");
 
+var displayCard = function(dealer, card) {
+	if(dealer) {
+		$(".dealer-box .card").last().after("<div class=\"card\" style=\"background:url('" + card.image
+			+ "'); background-size:cover;\"><\/div>");
+	} else {
+		$(".player-box .card").last().after("<div class=\"card\" style=\"background:url('" + card.image 
+			+ "'); background-size:cover;\"><\/div>");
+	}
+}
+
 // Hit me button adds card to player hand and gets total
 
 var hitMe = function() {
 	addCard(playerHand);
+	setTimeout(function(){
+	displayCard(false, playerHand[playerHand.length-1]);
 	showScore(true);
+	}, 300);
 	if(scoreHand(playerHand) > 21) {
-		$(".player-box h3>span").text("BUST!");
+		$(".player-box h3>span").text("Player BUST with " + scoreHand(playerHand));
 		playerLose();
 		showScore();
 	}
@@ -207,11 +220,12 @@ var dealerTurn = function() {
 	showScore();
 	while(dscore < 17) {
 		addCard(dealerHand);
+		displayCard(true, dealerHand[dealerHand.length-1]);
 		dscore = scoreHand(dealerHand);
 		showScore();
 	}
 	if (dscore > 21) {
-		$(".dealer-box h3>span").text("BUST!");
+		$(".dealer-box h3>span").text("Dealer BUST with " + scoreHand(dealerHand));
 		playerWin();
 	} else if (dscore === pscore) {
 		playerPush();
@@ -224,11 +238,16 @@ var dealerTurn = function() {
 
 // Start a new game
 var newGame = function(){
-
+	// Initialize variables
 	deck = [];
 	playerHand = [];
 	dealerHand = [];
 
+	// Clear existing cards from playing field
+	$(".dealer-box .holder").nextUntil("h3").remove();
+	$(".player-box .holder").nextUntil(".player-buttons").remove();
+
+	// Reset buttons and alerts
 	$("#hit-me").prop("disabled",false).css("opacity", "1");
 	$("#stand").prop("disabled",false).css("opacity", "1");
 	$(".dealer-box h3>span").text("");
@@ -236,8 +255,23 @@ var newGame = function(){
 	$(".dealer-box h2>span").text("Hand");
 	$(".player-box h2>span").text("Hand");
 	
+	// Rebuild the deck and shuffle the cards
 	buildDeck(suits,values);
 	deck.shuffle();
+
+	// Deal cards to dealer and player, display cards
+	addCard(dealerHand);
+	displayCard(true, dealerHand[0]);
+	$(".dealer-box .card").addClass("turned");
+	addCard(dealerHand);
+	displayCard(true, dealerHand[1]);
+
+	addCard(playerHand);
+	displayCard(false, playerHand[0]);
+	addCard(playerHand);
+	displayCard(false, playerHand[1]);
+	showScore(true);
+
 }
 
 // build and shuffle deck
