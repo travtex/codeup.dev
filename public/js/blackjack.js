@@ -102,15 +102,6 @@ var addCard = function(hand) {
 	return hand.push(dealCard(deck));
 }
 
-// addCard(playerHand);
-// addCard(playerHand);
-// addCard(playerHand);
-// addCard(playerHand);
-
-
-// console.log(playerHand);
-
-
 // Read the hand array, check for aces, and return total score
 
 // Return blackjack score of an array of cards, adjust for aces if over 21.
@@ -136,10 +127,6 @@ var scoreHand = function(hand) {
 	}
 	return score;
 }
-
-// Initialize player and dealer hand/display
-
-// 
 
 // Show player and dealer totals
 
@@ -183,7 +170,6 @@ var playerPush = function() {
 	$(".player-box h2>span").text("PUSH!");
 
 }
-//$(".player-box .card").last().after("<div class=\"card\" style=\"background:url('" + card1.image + "'); background-size:cover;\"><\/div>");
 
 var displayCard = function(dealer, card) {
 	if(dealer) {
