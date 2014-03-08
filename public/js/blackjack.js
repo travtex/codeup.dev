@@ -143,7 +143,7 @@ var scoreHand = function(hand) {
 
 // Initialize player and dealer hand/display
 
-// $(".player-box .card").last().after("<div class=\"card\"></div>");
+// 
 
 // Show player and dealer totals
 
@@ -165,9 +165,22 @@ var showScore = function(player) {
 var hitMe = function() {
 	addCard(playerHand);
 	showScore(true);
+	if(scoreHand(playerHand) > 21) {
+		$(".player-box h3>span").text("BUST!");
+		$("#hit-me").prop("disabled",true).css("opacity", "0.6");
+		$("#stand").prop("disabled",true).css("opacity", "0.6");
+		$(".dealer-box .turned").removeClass("turned");
+		showScore();	
+	}
+
 }
 
 // Dealer plays hand, must hit under 17 and stay over 17
+
+var dealerTurn = function() {
+	$(".dealer-box .turned").removeClass("turned");
+	showScore();
+}
 
 // console.log(scoreHand(playerHand));
 
