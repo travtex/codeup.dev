@@ -9,22 +9,20 @@
 
     <script>
 
+
+        // Simulate save function
         function save() {
             alert('Saved!');
         }
 
+        // Autosave 5s after last user keyup
         function autosave() {
             var delay = 5000;
             
             clearTimeout(this.timeoutId);
             this.timeoutId = setTimeout(save, delay);
-
         }
 
-        // don't modify the line below
-        // this causes the autosave function to be called whenever
-        // a key up event occurs in the textarea
-        // we will learn about events in the DOM lessons
         var textarea = document.getElementById('important');
         textarea.addEventListener('keyup', autosave, false);
 
