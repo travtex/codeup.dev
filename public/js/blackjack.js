@@ -261,5 +261,5 @@ var newGame = function(){
 
 // build and shuffle deck
 // Testing
-console.log(deck);
+// console.log(deck);
 
