@@ -33,7 +33,7 @@
         // todo: set text color on every other list item to grey
         // todo: set text color of li with dbid = 1 to blue
 
-        for(i = 0; i < listItems.length; i++) {
+        for(var i = 0; i < listItems.length; i++) {
             if (listItems[i].attributes['data-dbid'].value == '1') {
                 listItems[i].style['color'] = 'blue';
             } else if (i % 2 === 1) {
