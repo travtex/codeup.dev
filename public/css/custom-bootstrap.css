@@ -16,6 +16,11 @@ body {
 	
 }
 
+.color-head {
+	padding: 4px;
+	border-radius: 5px;
+}
+
 .profile-pic:hover {
 	opacity: 1;
 	-webkit-filter: grayscale(0%);
