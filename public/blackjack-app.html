@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,6 +14,77 @@
     <link rel="stylesheet" href="css/blackjack.css">
 </head>
 <body>
+	<!-- Preload card images -->
+	<div class="hidden">
+		<script>
+		
+			var images = new Array()
+			function preload() {
+				for (i = 0; i < preload.arguments.length; i++) {
+					images[i] = new Image()
+					images[i].src = preload.arguments[i]
+				}
+			}
+			preload(
+				"img/cards/ace-of-harts.jpg",
+				"img/cards/ace-of-kraken.jpg",
+				"img/cards/ace-of-lions.jpg",
+				"img/cards/ace-of-wolves.jpg",
+				"img/cards/card-back.jpg",
+				"img/cards/eight-of-harts.jpg",
+				"img/cards/eight-of-kraken.jpg",
+				"img/cards/eight-of-lions.jpg",
+				"img/cards/eight-of-wolves.jpg",
+				"img/cards/five-of-harts.jpg",
+				"img/cards/five-of-kraken.jpg",
+				"img/cards/five-of-lions.jpg",
+				"img/cards/five-of-wolves.jpg",
+				"img/cards/four-of-harts.jpg",
+				"img/cards/four-of-kraken.jpg",
+				"img/cards/four-of-lions.jpg",
+				"img/cards/four-of-wolves.jpg",
+				"img/cards/hodor-face.jpg",
+				"img/cards/jack-of-harts.jpg",
+				"img/cards/jack-of-kraken.jpg",
+				"img/cards/jack-of-lions.jpg",
+				"img/cards/jack-of-wolves.jpg",
+				"img/cards/king-of-harts.jpg",
+				"img/cards/king-of-lions.jpg",
+				"img/cards/king-of-kraken.jpg",
+				"img/cards/king-of-wolves.jpg",
+				"img/cards/nine-of-harts.jpg",
+				"img/cards/nine-of-kraken.jpg",
+				"img/cards/nine-of-lions.jpg",
+				"img/cards/nine-of-wolves.jpg",
+				"img/cards/queen-of-harts.jpg",
+				"img/cards/queen-of-kraken.jpg",
+				"img/cards/queen-of-lions.jpg",
+				"img/cards/queen-of-wolves.jpg",
+				"img/cards/seven-of-harts.jpg",
+				"img/cards/seven-of-kraken.jpg",
+				"img/cards/seven-of-lions.jpg",
+				"img/cards/seven-of-wolves.jpg",
+				"img/cards/six-of-harts.jpg",
+				"img/cards/six-of-kraken.jpg",
+				"img/cards/six-of-lions.jpg",
+				"img/cards/six-of-wolves.jpg",
+				"img/cards/ten-of-harts.jpg",
+				"img/cards/ten-of-kraken.jpg",
+				"img/cards/ten-of-lions.jpg",
+				"img/cards/ten-of-wolves.jpg",
+				"img/cards/three-of-harts.jpg",
+				"img/cards/three-of-kraken.jpg",
+				"img/cards/three-of-lions.jpg",
+				"img/cards/three-of-wolves.jpg",
+				"img/cards/two-of-harts.jpg",
+				"img/cards/two-of-kraken.jpg",
+				"img/cards/two-of-lions.jpg",
+				"img/cards/two-of-wolves.jpg"
+			)
+		
+		</script>
+</div>
+
 	<div class="container">
 	<h1 class="title" data-text="Game of Thrones Blackjack">Game of Thrones Blackjack</h1>
 	<div id="main" class="container clearfix dealer-box">

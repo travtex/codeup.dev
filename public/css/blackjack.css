@@ -36,25 +36,8 @@
 	text-align: center;
 }
 
-#ace-of-harts {
-	background: url('../img/cards/ace-of-harts.jpg');
-	background-size: cover;
-}
-
-
-#king-of-wolves {
-	background: url('../img/cards/king-of-wolves.jpg');
-	background-size: cover;
-}
-
-#ten-of-kraken {
-	background: url('../img/cards/ten-of-kraken.jpg');
-	background-size: cover;
-}
-
-#queen-of-harts {
-	background: url('../img/cards/queen-of-harts.jpg');
-	background-size: cover;
+.hidden {
+	display: none;
 }
 .turned {
 	background: url('../img/cards/card-back.jpg') !important;
