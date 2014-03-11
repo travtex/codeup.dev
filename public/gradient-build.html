@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Gradient Builder</title>
+	<style>
+
+	#present {
+		height: 500px;
+		width: 500px;
+		border-radius: 20px;
+		border: 3px solid #000000;
+	}
+
+	</style>
+</head>
+<body>
+	<form action="POST">
+		<label for="first">First Color:
+		<input type="text" name="first" id="first"></label>
+		<label for="second">Second Color:
+		<input type="text" name="second" id="second"></label>
+		<br />
+		<label for="radial">Radial: <input type="radio" name="grad-type" id="radial" value="radial"></label>
+		<label for="linear">Linear: <input type="radio" name="grad-type" id="linear"value="linear"></label>
+
+	</form>
+	<button type="button" id="clicker">Make Gradient</button>
+	<br />
+	<br />
+	<div id="present">
+	</div>
+<script>
+	
+	var color1='';
+	var color2='';
+	var type;
+
+	var work = document.getElementById('clicker');
+
+	var gradient = function() {
+		color1 = document.getElementById('first').value;
+		color2 = document.getElementById('second').value;
+		if (document.getElementById('radial').checked) {
+			type = document.getElementById('radial').value;
+		} else if (document.getElementById('linear').checked) {
+			type = document.getElementById('linear').value;
+		}
+		document.getElementById('present').style['background-image'] = '-webkit-' + type + '-gradient(top left, #' + color1 + ', #' + color2 + ')';
+	}
+
+	work.addEventListener('click', gradient, false);
+
+</script>
+</body>
+</html>
