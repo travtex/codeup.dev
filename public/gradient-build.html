@@ -5,21 +5,26 @@
 	<title>Gradient Builder</title>
 	<style>
 
+	body {
+		background: linen;
+	}
+
 	#present {
 		height: 500px;
 		width: 500px;
 		border-radius: 20px;
 		border: 3px solid #000000;
+		background: #ffffff;
 	}
 
 	</style>
 </head>
 <body>
 	<form action="POST">
-		<label for="first">First Color:
-		<input type="text" name="first" id="first"></label>
-		<label for="second">Second Color:
-		<input type="text" name="second" id="second"></label>
+		<label for="first">First Color: #
+		<input type="text" name="first" id="first" placeholder="HEX"></label>
+		<label for="second">Second Color: #
+		<input type="text" name="second" id="second" placeholder="HEX"></label>
 		<br />
 		<label for="radial">Radial: <input type="radio" name="grad-type" id="radial" value="radial"></label>
 		<label for="linear">Linear: <input type="radio" name="grad-type" id="linear"value="linear"></label>
