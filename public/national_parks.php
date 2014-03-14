@@ -60,14 +60,21 @@ $parks_data = $mysqli->query("SELECT * FROM national_parks ORDER BY " . $sort_co
 			
 		<th>Name
 			<br />
-			<small><a href="?sort_column=name&amp;sort_order=asc">&uarr;</a> / 
-				<a href="?sort_column=name&amp;sort_order=desc">&darr;</a></small>
+			<small><a href="?sort_column=name&amp;sort_order=asc">
+				<span class="glyphicon glyphicon-chevron-up"></span></a> / 
+				<a href="?sort_column=name&amp;sort_order=desc">
+					<span class="glyphicon glyphicon-chevron-down"></span>
+				</a></small>
 		</th>
 			
 		<th>State
 			<br />
-			<small><a href="?sort_column=state&amp;sort_order=asc">&uarr;</a> / 
-				<a href="?sort_column=state&amp;sort_order=desc">&darr;</a></small>
+			<small><a href="?sort_column=state&amp;sort_order=asc">
+				<span class="glyphicon glyphicon-chevron-up"></span>
+			</a> / 
+				<a href="?sort_column=state&amp;sort_order=desc">
+					<span class="glyphicon glyphicon-chevron-down"></span>
+				</a></small>
 		</th>
 		
 		<th>Description
@@ -80,8 +87,10 @@ $parks_data = $mysqli->query("SELECT * FROM national_parks ORDER BY " . $sort_co
 		
 		<th>Date Established
 			<br />
-			<small><a href="?sort_column=date_established&amp;sort_order=asc">&uarr;</a> / 
-				<a href="?sort_column=date_established&amp;sort_order=desc">&darr;</a></small>
+			<small><a href="?sort_column=date_established&amp;sort_order=asc">
+				<span class="glyphicon glyphicon-chevron-up"></span></a> / 
+				<a href="?sort_column=date_established&amp;sort_order=desc">
+					<span class="glyphicon glyphicon-chevron-down"></span></a></small>
 		</th> 
 	</thead>
 	<tbody>

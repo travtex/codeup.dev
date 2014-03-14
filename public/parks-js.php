@@ -9,7 +9,7 @@ require_once("js/park-query.php");
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>PHP National Parks Exercise</title>
+	<title>jQuery National Parks Exercise</title>
 	<link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/flatly/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom-bootstrap.css" rel="stylesheet" />
     <link href="css/tablesort.css" rel="stylesheet" />
