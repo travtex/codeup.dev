@@ -8,16 +8,8 @@ if ($mysqli->connect_errno) {
 			. $mysqli->connect_error . PHP_EOL);
 } 
 
-if(!empty($_GET)) {
-	$sort_column = $_GET['sort_column'];
-	$sort_order = $_GET['sort_order'];
-} else {
-	$sort_column = 'name';
-	$sort_order = 'asc';
-}
 
-$parks_data = $mysqli->query("SELECT * FROM national_parks ORDER BY " . $sort_column
-				. " " . $sort_order );
+$parks_data = $mysqli->query("SELECT * FROM national_parks");
 
 ?>
 
@@ -28,6 +20,8 @@ $parks_data = $mysqli->query("SELECT * FROM national_parks ORDER BY " . $sort_co
 	<title>PHP National Parks Exercise</title>
 	<link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/flatly/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom-bootstrap.css" rel="stylesheet" />
+    <link href="css/tablesort.css" rel="stylesheet" />
+    <!-- <link href="css/jq.css" rel="stylesheet" /> -->
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<style>
 
@@ -38,45 +32,36 @@ $parks_data = $mysqli->query("SELECT * FROM national_parks ORDER BY " . $sort_co
 		td {
 			padding: 5px;
 		}
-
+		
 	</style>
+	<script src="js/jquery-latest.js"></script>
+    
+	<script src="js/jquery.tablesorter.js"></script>
+        <script>
+        $(document).ready(function() {
+        	$('.tablesorter').tablesorter()
+        });
+
+        </script>
 	
 </head>
 <body>
 
 <h2>National Parks</h2>
 <br />
-<table id="#parkTable" class="table table-striped table-hover tablesorter">
+<table id="#parkTable" class="tablesorter table table-striped table-hover">
 	<thead>
-		<th>#
-			<br /><br />
-		</th>
+		<th>#</th>
 			
-		<th>Name
-			<br />
-			<small><a href="?sort_column=name&amp;sort_order=asc">asc</a> / 
-				<a href="?sort_column=name&amp;sort_order=desc">desc</a></small>
-		</th>
+		<th>Name</th>
 			
-		<th>State
-			<br />
-			<small><a href="?sort_column=state&amp;sort_order=asc">asc</a> / 
-				<a href="?sort_column=state&amp;sort_order=desc">desc</a></small>
-		</th>
+		<th>State</th>
 		
-		<th>Description
-			<br /><br />
-		</th>
+		<th>Description</th>
 		
-		<th>Area (acres)
-			<br /><br />
-		</th>
+		<th>Area (acres)</th>
 		
-		<th>Date Established
-			<br />
-			<small><a href="?sort_column=date_established&amp;sort_order=asc">asc</a> / 
-				<a href="?sort_column=date_established&amp;sort_order=desc">desc</a></small>
-		</th> 
+		<th>Date Established</th> 
 	</thead>
 	<tbody>
 <?
@@ -94,8 +79,5 @@ while ($row = $parks_data->fetch_assoc()) {
 	</tbody>
 
 </table>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-        
 </body>
 </html>
