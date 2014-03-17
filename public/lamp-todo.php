@@ -48,6 +48,7 @@ $mysqli->close();
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+  	<script src="js/jPages.js"></script>
 </head>
 <body>
 
@@ -55,7 +56,7 @@ $mysqli->close();
 		<div class="row">
 			<div class="col-md-8">
 				<h2>This is the TODO List!</h2>
-				<ul>
+				<ul id="itemContainer">
 					<?
 
 					while ($row = $todos_data->fetch_assoc()) {
@@ -65,6 +66,7 @@ $mysqli->close();
 
 					?>
 				</ul>
+				<div class="holder"></div>
 			</div>
 			<div class="col-md-4" id="add_todo">
 				<br /><br />
@@ -85,6 +87,21 @@ $mysqli->close();
 
 	</div>
 	
+	<script>
+
+		$(document).ready(function () {
+			$("div.holder").jPages({
+				containerID : "itemContainer",
+				perPage     : 10,
+				startPage   : 1,
+				startRange  : 1,
+				midRange    : 5,
+				endRange    : 1
+			});
+			
+		});
+
+	</script>
 	
 </body>
 </html>
