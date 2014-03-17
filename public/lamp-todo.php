@@ -1,3 +1,19 @@
+<?
+
+$mysqli = @new mysqli('127.0.0.1', 'codeup', 'password', 'todo_list');
+
+if ($mysqli->connect_errno) {
+		throw new Exception('Failed to connect to MySQL: (' . $mysqli->connect_errno . ') ' 
+			. $mysqli->connect_error . PHP_EOL);
+} 
+
+$todos_data = $mysqli->query("SELECT * FROM todos;" );
+
+$mysqli->close();
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,7 +30,24 @@
 <body>
 
 	<div class="container clearfix"  id="main">
-	Testing
+		<div class="row">
+			<div class="col-md-6">
+				<h2>This is the TODO List!</h2>
+				<ul>
+					<?
+
+					while ($row = $todos_data->fetch_assoc()) {
+					    echo '<li> ' . $row['todo'] . '<span class="hidden">' . 
+					    $row['id'] . '</span><a class="snip" href="?remove=' . $row['id'] . 
+					    '"> &#9988;</a></li>';
+					}
+
+					?>
+				</ul>
+			</div>
+		</div>
+
+
 	</div>
 	
 </body>

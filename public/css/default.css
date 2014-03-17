@@ -35,8 +35,26 @@ html {
         text-shadow: 2px 2px 4px #779;
     }
 
+    span.hidden {
+        visibility: hidden;
+    }
+
     ul {
         font-size: 14pt;
+    }
+
+    .snip {
+        -webkit-transition: all .3s ease-in-out !important;
+        
+    }
+
+    .snip:hover {
+        display: inline-block;
+        text-decoration: none;
+        -webkit-transform: rotate(180deg) scale(1.4);
+        position: relative;
+        right: -5px;
+        
     }
 
    
