@@ -1,0 +1,80 @@
+body {
+	background-image: url(../img/bamboo.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	font-family: 'Slackey', cursive, sans-serif;
+	color: #E6FEE6;
+}
+
+.title {
+	text-align: center;
+	font-size: 60pt;
+	background: -webkit-linear-gradient(left, #FFFFFF, #ADFCAD);
+  			-webkit-background-clip: text;
+  			-webkit-text-fill-color: transparent;
+  	border: 3px solid #ADFCAD;
+  	border-radius: 20px;
+  	height: 100%;
+  	weight: 100%;
+}
+
+#display {
+	background: -webkit-radial-gradient(center, #FFFFFF, #C6FDC6);
+	height: auto;
+	width: 85%;
+	border-radius: 20px;
+	color: #222222;
+	text-align: center;
+	margin: auto;
+	box-shadow: 8px 8px 20px #000000;
+
+}
+
+#current_panda {
+	border: 3px solid #222222;
+	box-shadow: 8px 8px 20px #000000;
+	margin-top: 10px;
+	max-width: 75%;
+	height: auto;
+	border-radius: 15px;
+	margin: auto;
+}
+
+#rank {
+	color: black;
+	border: 0;
+	font-weight: bold;
+	font-size: 18pt;
+	width: 30px;
+	text-align: center;
+	margin: 10px;
+}
+
+#rank_text {
+	text-align: center;
+	font-size: 18pt;
+	background: -webkit-radial-gradient(center, #000000, #003311);
+	border-radius: 20px;
+}
+
+#slider {
+	width: 80%;
+	margin: auto;
+}
+
+#score_track {
+	font-color: #222222 !important;
+}
+
+#average {
+	font-color: black;
+}
+
+#buttons {
+	margin: auto;
+	margin-top: 20px;
+	width: 80%;
+	font-size: 28pt;
+}
