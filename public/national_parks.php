@@ -1,5 +1,6 @@
 <?
 
+$ex_error = '';
 
 $mysqli = @new mysqli('127.0.0.1', 'codeup', 'password', 'codeup_mysqli_test_db');
 
@@ -21,16 +22,26 @@ $parks_data = $mysqli->query("SELECT * FROM national_parks ORDER BY " . $sort_co
 
 if (!empty($_POST)) {
 	
-	$stmt = $mysqli->prepare("INSERT INTO national_parks (name, state, description, 
-		date_established, area_in_acres) VALUES(?, ?, ?, ?, ?)");
+	try {
+		if(empty($_POST['parkname']) || empty($_POST['parkstate']) || 
+		   empty($_POST['parkdesc']) || empty($_POST['parkdate']) || 
+		   empty($_POST['parkacre'])) {
+			throw new Exception("Must fill all entries.");
+		} else {
+		$stmt = $mysqli->prepare("INSERT INTO national_parks (name, state, description, 
+			date_established, area_in_acres) VALUES(?, ?, ?, ?, ?)");
 
-	$stmt->bind_param("ssssd", htmlspecialchars($_POST['parkname']), 
-		htmlspecialchars($_POST['parkstate']),
-		htmlspecialchars($_POST['parkdesc']), 
-		htmlspecialchars($_POST['parkdate']), 
-		htmlspecialchars($_POST['parkacre']));
+		$stmt->bind_param("ssssd", htmlspecialchars($_POST['parkname']), 
+			htmlspecialchars($_POST['parkstate']),
+			htmlspecialchars($_POST['parkdesc']), 
+			htmlspecialchars($_POST['parkdate']), 
+			htmlspecialchars($_POST['parkacre']));
 
-	$stmt->execute();
+		$stmt->execute();
+		}
+	} catch (Exception $e) {
+		$ex_error = $e->getMessage();
+	}
 	
 }
 
@@ -175,8 +186,10 @@ $mysqli->close();
 			</div>
 			<button type="submit" class="btn btn-primary">Add New Park</button>
 
+			<? if (!empty($ex_error)) : ?>
+				<h3><mark><?= $ex_error; ?></mark></h3>
+			<? endif; ?>
 		</form>
-		
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
