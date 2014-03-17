@@ -9,12 +9,30 @@ if ($mysqli->connect_errno) {
 			. $mysqli->connect_error . PHP_EOL);
 } 
 
-if(!empty($_GET)) {
+
+$sort_order = 'asc';
+$validCol = ['name', 'state', 'date_established', 'area_in_acres'];
+
+// if(!empty($_GET)) {
+// 	$sort_column = $_GET['sort_column'];
+// 	$sort_order = $_GET['sort_order'];
+// } else {
+// 	$sort_column = 'name';
+// 	$sort_order = 'asc';
+// }
+
+if (!empty($_GET) && in_array($_GET['sort_column'], $validCol)) {
 	$sort_column = $_GET['sort_column'];
-	$sort_order = $_GET['sort_order'];
+	
 } else {
 	$sort_column = 'name';
+
+}
+
+if (!empty($_GET) && ($_GET['sort_order'] != 'desc')) {
 	$sort_order = 'asc';
+} else {
+	$sort_order = 'desc';
 }
 
 $parks_data = $mysqli->query("SELECT * FROM national_parks ORDER BY " . $sort_column
@@ -126,7 +144,14 @@ $mysqli->close();
 				</th>
 				
 				<th>Area (acres)
-					<br /><br />
+					<br />
+					<small><a href="?sort_column=area_in_acres&amp;sort_order=asc">
+						<span class="glyphicon glyphicon-chevron-up"></span>
+					</a> / 
+						<a href="?sort_column=area_in_acres&amp;sort_order=desc">
+							<span class="glyphicon glyphicon-chevron-down"></span>
+						</a></small>
+					<br />
 				</th>
 				
 				<th>Date Established
