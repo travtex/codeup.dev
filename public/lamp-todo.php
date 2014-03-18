@@ -62,10 +62,10 @@ require_once('classes/todo-db.php');
 		$(document).ready(function () {
 			$("div.holder").jPages({
 				containerID : "itemContainer",
-				perPage     : 10,
+				perPage     : 6,
 				startPage   : 1,
 				startRange  : 1,
-				midRange    : 5,
+				midRange    : 3,
 				endRange    : 1
 			});
 			
