@@ -26,11 +26,11 @@ require_once('classes/todo-db.php');
 		<div class="row">
 			<div class="col-md-8">
 				<h2>This is the TODO List!</h2>
-				<ul id="itemContainer">
+				<ul id="itemContainer" class="todo_list">
 					<?
 
 					while ($row = $todos_data->fetch_assoc()) {
-					    echo '<li> ' . $row['todo'] . '<a class="snip" href="?remove=' . 
+					    echo '<li> ' . $row['todo'] . '<a class="snip pull-right" href="?remove=' . 
 					    $row['id'] . '"> &#9988;</a></li>';
 					}
 
