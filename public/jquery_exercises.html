@@ -8,19 +8,18 @@
 <body>
 	
 	<div class="container">
-		<h1 id="title">I am an &lt;H1&gt; Element</h1>
+		<h1 id="title" class="codeup">I am an &lt;H1&gt; Element</h1>
 		<p class="p-tag">I am a humble &lt;P&gt; element.</p>
 		<ul class="unordered">
-			<li>I'm a thing!</li>
+			<li class="codeup">I'm a thing!</li>
 			<li>I, too, am a thing.</li>
-			<li>I question my thingness.</li>
+			<li class="codeup">I question my thingness.</li>
 		</ul>
 	</div>
 
 	<script>
-		$(document).ready(function () {
-			var contents = $('.container').html();
-			alert(contents);
+		$(document).ready(function() {
+			$('.codeup').css('border', '1px solid #C00');
 		});
 	</script>
 </body>
