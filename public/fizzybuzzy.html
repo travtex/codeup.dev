@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fizzes and Buzzes</title>
+	<link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/flatly/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom-bootstrap.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+   <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+ 
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <style>
+		.fizz_control {
+			border: 2px solid #048;
+			padding: 10px;
+			margin: 0 auto;
+			text-align: center;
+			border-radius: 20px;
+			box-shadow: 6px 6px 45px #222;
+		}
+
+    </style>
+</head>
+
+<body>
+
+	<div class="container clearfix" id="main">
+			
+			<span id="target"></span>
+			
+			</table>
+		<div class="col-md-8 fizz_control">
+			<input type="text" value="" placeholder="How Many?" id="fizzNum"/><br /><br />
+			<p>
+				<button type="button" class="btn btn-danger" onclick="fizzBuzz()">BUTTON FOR TO BE PRESSING!</button>
+			</p>
+		</div>
+	</div>
+
+<script>
+ 	
+ 	function fizzBuzz() {
+ 		 for(var i = 1; i <= document.getElementById('fizzNum').value; i++) {
+ 		 	if (i%15 === 0) {
+ 		 		$('#target').append($('<p class="alert alert-info"><mark><i class="fa fa-bolt"></i></mark></p>'));
+ 		 	} else if (i%5 === 0) {
+ 		 		$('#target').append($('<p class="alert alert-success"><i class="fa fa-road"></i></p>'));
+ 		 	} else if (i%3 === 0) {
+ 		 		$('#target').append($('<p class="alert alert-warning"><i class="fa fa-umbrella"></i></p>'));
+ 		 	} else {
+ 		 		$('#target').append($('<p>' + i + '</p>'));
+ 		 	}
+ 		 }
+	}
+ </script>	
+</body>
+</html>
