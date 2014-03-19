@@ -79,16 +79,13 @@
         audioElement.play();
         }, true);
 
-
-
-
         $('body').mousedown(function() {
         audioElement.play();
         });
 
-
         $('body').mouseup(function() {
-        audioElement.Stop;
+        audioElement.pause();
+        audioElement.currentTime = 0;
         });
 
 
