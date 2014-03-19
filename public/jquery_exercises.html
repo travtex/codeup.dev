@@ -4,7 +4,14 @@
 	<meta charset="UTF-8">
 	<title>jQuery Exercises</title>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-
+	<style type="text/css">
+	body {
+		cursor: url(img/hammer.jpg), auto;
+	}
+	.clicked {
+		cursor: url(img/hammerdown.jpg), auto;
+	}
+	</style>
 </head>
 <body>
 	
@@ -43,6 +50,15 @@
 
 			}).mouseleave(function() {
 				$(this).css('color', '#000').css('background-color', '#CCC');
+			});
+		});
+
+		$(document).ready(function() {
+			$('body').mousedown(function() {
+				$(this).addClass('clicked');
+			});
+			$('body').mouseup(function() {
+				$(this).removeClass('clicked');
 			});
 		});
 	</script>
