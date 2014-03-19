@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>jQuery Exercises</title>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-	
+
 </head>
 <body>
 	
@@ -29,6 +29,21 @@
 			$('h1, p, li').css('background-color', '#DD8');
 			alert($('h1').html());
 		});
+		});
+
+		$(document).ready(function() {
+			$('h1').dblclick(function() {
+				$(this).css('font-size', '8pt');
+			});
+		});
+
+		$(document).ready(function() {
+			$('button').mouseenter(function() {
+				$(this).css('color', '#FFF').css('background-color', '#014');
+
+			}).mouseleave(function() {
+				$(this).css('color', '#000').css('background-color', '#CCC');
+			});
 		});
 	</script>
 </body>
