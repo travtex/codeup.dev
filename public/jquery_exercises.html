@@ -14,8 +14,8 @@
 	</style>
 </head>
 <body>
-	
 	<div class="container">
+	<span id="sound"></span>
 		<h1 id="title" class="codeup">I am an &lt;H1&gt; Element</h1>
 		<p class="p-tag">I am a humble &lt;P&gt; element.</p>
 		<ul class="unordered">
@@ -38,6 +38,12 @@
 		});
 		});
 
+		// function playSound(soundfile) {
+		//     $("#sound").html("<embed src=\""
+		//     +soundfile+"\" hidden=\"true\" autostart=\"true\"
+		//     loop=\"false\" />");
+		// };
+
 		$(document).ready(function() {
 			$('h1').dblclick(function() {
 				$(this).css('font-size', '8pt');
@@ -57,10 +63,37 @@
 			$('body').mousedown(function() {
 				$(this).addClass('clicked');
 			});
+
 			$('body').mouseup(function() {
 				$(this).removeClass('clicked');
 			});
 		});
+
+		$(document).ready(function() {
+        var audioElement = document.createElement('audio');
+        audioElement.setAttribute('src', 'img/thud.mp3');
+        //audioElement.setAttribute('autoplay', 'autoplay');
+        //audioElement.load()
+        $.get();
+        audioElement.addEventListener("load", function() {
+        audioElement.play();
+        }, true);
+
+
+
+
+        $('body').mousedown(function() {
+        audioElement.play();
+        });
+
+
+        $('body').mouseup(function() {
+        audioElement.Stop;
+        });
+
+
+
+});
 	</script>
 </body>
 </html>

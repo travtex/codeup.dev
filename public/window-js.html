@@ -1,6 +1,7 @@
 <html>
 <head>
     <title>Delayed Autosave</title>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>
 
@@ -9,7 +10,7 @@
 
     <script>
 
-        var delay = 5000;
+        var delay = 3000;
         var timeoutId = null;
         // Simulate save function
         function save() {
@@ -22,8 +23,12 @@
             timeoutId = setTimeout(save, delay);
         }
 
-        var textarea = document.getElementById('important');
-        textarea.addEventListener('keyup', autosave, false);
+        // var textarea = document.getElementById('important');
+        // textarea.addEventListener('keyup', autosave, false);
+
+        $(document).ready(function() {
+            $('#important').keyup(autosave);
+        });
 
     </script>
 
