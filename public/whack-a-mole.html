@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Whack That Mole!</title>
+	<link rel="stylesheet" href="css/molewhack.css" />
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Nosifer' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<div class="container">
+		<h1>Maulwurf-M&ouml;rder</h1>
+		<br /><br />
+		<div id="game-board" class="clearfix">
+			<div class="row">
+				<div class="box" id="box-1"></div>
+				<div class="box" id="box-2"></div>
+				<div class="box" id="box-3"></div>
+			</div>
+			<div class="row">
+				<div class="box" id="box-4"></div>
+				<div class="box" id="box-5"></div>
+				<div class="box" id="box-6"></div>
+			</div>
+			<div class="row">
+				<div class="box" id="box-7"></div>
+				<div class="box" id="box-8"></div>
+				<div class="box" id="box-9"></div>
+			</div>
+		</div>
+		<div id="mole-counter">
+			<img id="dead-mole" src="img/dead-mole.jpg" alt="Dead Mole Counter">
+			<h1 id="scorekeep"><br/>&nbsp;&nbsp; =<span id="score"> 0</span></h2>
+		</div>
+	</div>
+	<script>
+		var deadMole = 0;
+		
+		function random(min, max) {
+			return Math.floor(Math.random() * (max - min + 1) + min);
+		}
+
+		function moleWhack() {
+			$('.active').removeClass('active');
+			
+			$('#box-' + random(1,9)).addClass('active');
+			
+		}
+		
+		$(document).ready(function() {
+			setInterval(function () {
+				moleWhack() }, 2000);
+
+			$('#game-board').mousedown(function() {
+				$(this).addClass('clicked');
+			});
+			$('#game-board').mouseup(function() {
+				$(this).removeClass('clicked');
+			});
+	        
+	        var audioElement = document.createElement('audio');
+	        audioElement.setAttribute('src', 'img/thud.mp3');
+	        //audioElement.setAttribute('autoplay', 'autoplay');
+	        //audioElement.load()
+	        $.get();
+	        audioElement.addEventListener("load", function() {
+		        audioElement.play();
+		        }, true);
+
+	        $('body').mousedown(function() {
+		        audioElement.play();
+	        });
+
+	        $('body').mouseup(function() {
+		        audioElement.pause();
+		        audioElement.currentTime = 0;
+	        });
+        	
+        	var squeakNoise = document.createElement('audio');
+        	squeakNoise.setAttribute('src', 'img/rat_die.wav');
+        	$.get();
+        	squeakNoise.addEventListener("load", function() {
+        		squeakNoise.play();
+        	}, true);
+        	
+
+	        // $('#game-board')on.mousedown(function() {
+	        // });
+
+	        $("#game-board").on('click', '.active', function(){
+	        	squeakNoise.play();
+			    $(this).hide("explode", {pieces: 100}, 400);
+			    deadMole++;
+			    $("#score").html(' ' + deadMole);
+			});
+       
+
+	  //       $(".active").click(function(){
+			//     $(this).hide("explode", {pieces: 100}, 400);
+			//     deadMole++;
+			//     $("#score").html(' ' + deadMole);
+			// });
+		});
+
+		
+
+        $(document).ready(function() {
+       }); 
+	</script>
+	
+</body>
+</html>

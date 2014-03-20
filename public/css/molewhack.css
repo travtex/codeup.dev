@@ -1,0 +1,57 @@
+body {
+	font-family: 'Nosifer', sans-serif !important;
+	color: firebrick !important;
+	margin: 20px !important;
+}
+
+h1 {
+	text-align: center;
+	font-size: 24pt !important;
+
+}
+h2 {
+/*	display: inline-block;
+*/}
+
+#game-board {
+	height: 390px;
+	width: 390px;
+	margin: auto;
+	cursor: url('../img/hammer.jpg'), auto;
+}
+.clicked {
+	cursor: url('../img/hammerdown.jpg'), auto !important;
+}
+
+#mole-counter {
+	width: 390px;
+	margin: auto;
+	border-top: 2px solid #222;
+	overflow: hidden;
+}
+
+#dead-mole {
+	display: inline-block;
+	float: left;
+	-webkit-transform: rotate(150deg);
+}
+
+#scorekeep {
+	text-align: justify;
+}
+
+.box {
+	height: 130px;
+	width: 130px;
+	float: left;
+	padding: 0;
+	margin: auto;
+	padding: 10px;
+}
+
+.active {
+	background-image: url('../img/mole.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
