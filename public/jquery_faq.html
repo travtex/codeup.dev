@@ -8,34 +8,44 @@
 	.invisible {
 		display: none;
 	}
-	#toggle {
-		cursor: pointer;
-	}
+	
 	</style>
 </head>
 <body>
 	<div class="container clearfix">
 
-		<dl>
-			<dt>Who is the director of the National Park Service?</dt>
-				<dd class="invisible">Jonathan B. Jarvis</dd>
-			<dt>How old is the national park system?</dt>
-				<dd class="invisible">The National Park Service was created by an Act signed by President Woodrow Wilson on August 25, 1916. Yellowstone National Park was established by an Act signed by President Ulysses S. Grant on March 1, 1872, as the nation's first national park. View the national park system</dd>
-			<dt>How many employees are in the National Park Service?</dt>
-				<dd class="invisible">Permanent, Temporary, and Seasonal - Approximately 22,000 diverse professionals<br />Volunteers in Parks - 221,000</dd>
-			<dt>How do I obtain a park pass?</dt>
-				<dd class="invisible">Visitors can obtain park passes by visiting their nearest park site. Most sites have passes available, however it is recommended to call a park prior to your visit. Learn more about the America the Beautiful - National Parks and Federal Recreation Lands Pass.</dd>
-			<dt>What do I need to know about driving off road in national parks?</dt>
-				<dd class="invisible">Before you head out, check with the national parks that you intend to visit. In many national parks, off-road driving is illegal. Where off-road driving is allowed, the National Park Service regulates it.</dd>
-		</dl>
-		<button type="button" id="toggle">Show / Hide FAQ Answers</button>
+		<h3>Arches</h3>
+			<ul>
+				<li>Named after the first Codeup cohort.</li>
+				<li>Somewhere in Utah.</li>
+				<li>Has some arches.</li>
+				<li>Also has fins, but 'Fins National Park' sounded stupid.</li>
+			</ul>
+		<h3>Glacier</h3>
+			<ul>
+				<li>Has a glacier.  Or many glaciers.</li>
+				<li>Climate is probably cold.</li>
+				<li>Will be misnamed once glaciers recede.</li>
+				<li>Lots of lakes.  Probably from melting glaciers.</li>
+			</ul>
+		<h3>Olympic</h3>
+			<ul>
+				<li>Actual US rainforest.  It rains in Washington.</li>
+				<li>Near the ocean.</li>
+				<li>Named after the Olympics.</li>
+				<li>Located on the Olympic Peninsula.</li>
+			</ul>
+
 	</div>
 	<script>
 		$(document).ready(function() {
-			$('#toggle').click(function() {
-				$('dd').toggleClass('invisible');
-			})
+			$('ul').each(function() {
+				$(this).children().first().css('font-weight', 'bold');
+			});
 
+			$('li').click(function() {
+				$(this).parent().addClass('invisible');
+			});
 		});
 
 	</script>

@@ -11,6 +11,14 @@
 	.clicked {
 		cursor: url(img/hammerdown.jpg), auto;
 	}
+	.test_mole {
+		height: 40px;
+		width: 65px;
+		background-image: -webkit-linear-gradient(top left, #DDDDDD, #555555);
+		padding: 8px;
+		border-radius: 8px;
+		margin: 20px;
+	}
 	</style>
 </head>
 <body>
@@ -25,6 +33,7 @@
 		</ul>
 		<br />
 		<button id="clickme" type="button">&diams; Do Everything Button &diams;</button> <span class="marquee">&larr; CLICK ME.</span>
+		<div class="test_mole">0 &lt;o&gt; 0</div>
 	</div>
 
 	<script>
@@ -87,10 +96,26 @@
         audioElement.pause();
         audioElement.currentTime = 0;
         });
+    });
 
+        $(document).ready(function() {
+        	var squeakNoise = document.createElement('audio');
+        	squeakNoise.setAttribute('src', 'img/rat_die.wav');
+        	$.get();
+        	squeakNoise.addEventListener("load", function() {
+        		squeakNoise.play();
+        	}, true);
+        	
 
+        $('.test_mole').mousedown(function() {
+        	squeakNoise.play();
+        });
+        $('.test_mole').mouseup(function() {
+        	// squeakNoise.pause();
+        	// squeakNoise.currentTime = 0;
+        });
+       }); 
 
-});
 	</script>
 </body>
 </html>
