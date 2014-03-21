@@ -65,8 +65,7 @@
 	        
 	        var audioElement = document.createElement('audio');
 	        audioElement.setAttribute('src', 'img/thud.mp3');
-	        //audioElement.setAttribute('autoplay', 'autoplay');
-	        //audioElement.load()
+	        
 	        $.get();
 	        audioElement.addEventListener("load", function() {
 		        audioElement.play();
@@ -89,8 +88,7 @@
         	}, true);
         	
 
-	        // $('#game-board')on.mousedown(function() {
-	        // });
+	        
 
 	        $("#game-board").on('click', '.active', function(){
 	        	squeakNoise.play();
@@ -99,12 +97,6 @@
 			    $("#score").html(' ' + deadMole);
 			});
        
-
-	  //       $(".active").click(function(){
-			//     $(this).hide("explode", {pieces: 100}, 400);
-			//     deadMole++;
-			//     $("#score").html(' ' + deadMole);
-			// });
 		});
 
 		
