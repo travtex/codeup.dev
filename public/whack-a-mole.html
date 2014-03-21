@@ -15,7 +15,7 @@
 <body>
 	<div class="container">
 		<h1>Maulwurf-M&ouml;rder</h1>
-		<br /><br />
+		<br /><h4>High Score: <span id="highscore"></span><br />
 		<div id="game-board" class="clearfix">
 			<div class="row">
 				<div class="box" id="box-1"></div>
@@ -37,10 +37,14 @@
 			<img id="dead-mole" src="img/dead-mole.jpg" alt="Dead Mole Counter">
 			<h1 id="scorekeep"><br/>&nbsp;&nbsp; =<span id="score"> 0</span></h2>
 		</div>
+		<button type="button" id="starter" onclick="startGame()">Zerschlagen Sie!</button>
 	</div>
 	<script>
 		var deadMole = 0;
-		
+		var highScore = 0;
+		var clicks = 0;
+		var gameSpeed = null;
+
 		function random(min, max) {
 			return Math.floor(Math.random() * (max - min + 1) + min);
 		}
@@ -51,15 +55,29 @@
 			$('#box-' + random(1,9)).addClass('active');
 			
 		}
-		
-		$(document).ready(function() {
-			setInterval(function () {
-				moleWhack() }, 2000);
 
-			$('#game-board').mousedown(function() {
+		$("#highscore").html(highScore);
+
+		
+		
+			function startGame() {
+				clicks = 0;
+				deadMole = 0;
+				gameSpeed = setInterval(function () {
+					moleWhack() }, random(2000, 3000));
+				$('button').hide("drop", { direction: 'down'}, 400);
+				$('#score').html(' ' + deadMole);
+				$('#highscore').html(' ' + highScore);
+			}
+
+			var board = $('#game-board');
+			var body = $('body');
+
+			board.mousedown(function() {
 				$(this).addClass('clicked');
+				clicks++;
 			});
-			$('#game-board').mouseup(function() {
+			board.mouseup(function() {
 				$(this).removeClass('clicked');
 			});
 	        
@@ -71,11 +89,11 @@
 		        audioElement.play();
 		        }, true);
 
-	        $('body').mousedown(function() {
+	        body.mousedown(function() {
 		        audioElement.play();
 	        });
 
-	        $('body').mouseup(function() {
+	        body.mouseup(function() {
 		        audioElement.pause();
 		        audioElement.currentTime = 0;
 	        });
@@ -87,22 +105,52 @@
         		squeakNoise.play();
         	}, true);
         	
-
-	        
-
-	        $("#game-board").on('click', '.active', function(){
+	        board.on('click', '.active', function(){
 	        	squeakNoise.play();
 			    $(this).hide("explode", {pieces: 100}, 400);
 			    deadMole++;
 			    $("#score").html(' ' + deadMole);
+			    
 			});
-       
-		});
+       		
+       		board.on('click', function() {
+
+       			if (clicks === 5) {
+       				 //clearInterval(gameSpeed);
+       				 gameSpeed = setInterval(function () {
+						moleWhack() }, random(1500, 2500));
+       			}
+       			if (clicks === 10) {
+       				// clearInterval(gameSpeed);
+       				gameSpeed = setInterval(function () {
+       					moleWhack() }, random(1000, 2000));
+       				
+       			}
+       			if (clicks === 15) {
+       				// clearInterval(gameSpeed);
+       				gameSpeed = setInterval(function () {
+       					moleWhack() }, random(500, 1000));
+       				
+       			}
+       			if (clicks === 20) {
+       				for (var i = 1; i < 99999; i++) {
+				        window.clearInterval(i);
+				    }
+
+				    $('.active').removeClass('active');
+       				$('button').fadeIn();
+
+       				if (deadMole > highScore) {
+       					alert('New High Score!');
+       					highScore = deadMole;
+       				}
+       			}
+       		});
+
+		//});
 
 		
 
-        $(document).ready(function() {
-       }); 
 	</script>
 	
 </body>
