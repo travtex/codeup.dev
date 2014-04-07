@@ -59,6 +59,6 @@ function getCity($val) {
 
 
 
-$fp = fopen('test_result.json', 'w');
+$fp = fopen('formatted_tester.json', 'w');
 fwrite($fp, json_encode($json1));
 fclose($fp);
