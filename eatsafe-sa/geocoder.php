@@ -18,7 +18,7 @@ $json1 = json_decode($data);
 
 $g_addr_str = $g_address.$g_city.$g_state.$g_zip;       
 $url = "https://maps.google.com/maps/api/geocode/json?
-        address=$g_addr_str&sensor=false&key=AIzaSyB5pN589kJ9atcmTc_unoGVFl-abNJFdV8";
+        address=$g_addr_str&sensor=false&key=AIzaSyBATdBOr4VnZqU5Gkb3xO7RPMdOJtWSOTM";
 
     var_dump($url);
 
